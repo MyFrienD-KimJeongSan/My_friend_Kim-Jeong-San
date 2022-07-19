@@ -14,5 +14,26 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        binding.bottomNav.background = null
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.frameLayout, HomeFragment())
+            .commitAllowingStateLoss()
+        binding.bottomNav.setOnItemSelectedListener { item ->
+            when(item.itemId){
+                R.id.home -> {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frameLayout, HomeFragment())
+                        .commitAllowingStateLoss()
+                    return@setOnItemSelectedListener true
+                }
+                R.id.operations -> {
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frameLayout, OperationsFragment())
+                        .commitAllowingStateLoss()
+                    return@setOnItemSelectedListener true
+                }
+            }
+            false
+        }
     }
 }
