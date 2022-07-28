@@ -10,6 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Fab_Bottom_app_bar">
         <activity
+            android:name=".operation.SecondCalculationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".operation.FirstCalculationActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
