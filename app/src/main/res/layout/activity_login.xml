@@ -11,6 +11,12 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools">
 
+        <FrameLayout
+            android:id="@+id/login_frm"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/login_complete_btn"/>
+
         <ImageView
             android:id="@+id/login_headline_text"
             android:layout_width="240dp"

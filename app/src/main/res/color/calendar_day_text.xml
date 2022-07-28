@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- the color of today when selected -->
+    <item android:color= "#ffffff" android:state_active="true" android:state_selected="true" />
+
+    <!-- the color of today -->
+    <item android:color="#6f97ff" android:state_active="true" />
+
+    <!-- the color of the selected day -->
+    <item android:color="#ffffff" android:state_selected="true" />
+
+    <!-- the color of other days -->
+    <item android:color="#222b45" />
+
+</selector>

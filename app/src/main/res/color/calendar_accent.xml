@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- the color of accents in today when selected -->
+    <item android:color="#ffffff" android:state_active="true" android:state_selected="true" />
+    
+    <!-- the color of accents in today -->
+    <item android:color="#6f97ff" android:state_active="true" />
+    
+    <!-- the color of accents in other days when selected -->
+    <item android:color="#ffffff" android:state_selected="true" />
+    
+    <!-- the color if accents in other days -->
+    <item android:color="#222b45" />
+</selector>

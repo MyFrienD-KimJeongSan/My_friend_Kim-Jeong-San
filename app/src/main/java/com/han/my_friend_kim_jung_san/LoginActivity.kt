@@ -23,6 +23,11 @@ class LoginActivity : AppCompatActivity() {
         binding.loginCompleteBtn.setOnClickListener {
             login()
         }
+
+        binding.loginMissingPwdText.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+        }
+
     }
 
     private fun login(){
@@ -63,4 +68,6 @@ class LoginActivity : AppCompatActivity() {
         val intent = Intent(this, SignUpActivity::class.java)
         startActivity(intent)
     }
+
+
 }
