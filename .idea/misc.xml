@@ -4,6 +4,13 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/HanKwanJin/AndroidStudioProjects/My_friend_Kim-Jeong-San/app/src/main/res/layout/activity_main.xml" value="0.31145833333333334" />
+        <entry key="app/src/main/res/drawable/rectangle.xml" value="0.2275" />
+        <entry key="app/src/main/res/font/font.xml" value="0.22962962962962963" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.2953125" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.2513702392578125" />
+        <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.2953125" />
+        <entry key="app/src/main/res/layout/calendar_day_layout.xml" value="0.2953125" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.2696594238281251" />
       </map>
     </option>
   </component>
