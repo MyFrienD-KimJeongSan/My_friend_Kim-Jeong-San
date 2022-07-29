@@ -2,30 +2,48 @@ package com.han.my_friend_kim_jung_san
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.appcompat.app.ActionBar
+import android.widget.Toast
+import com.han.my_friend_kim_jung_san.account.AccountFragment
 import com.han.my_friend_kim_jung_san.databinding.ActivityMainBinding
-import java.util.zip.Inflater
+import com.han.my_friend_kim_jung_san.operation.OperationsFragment
 
 class MainActivity : AppCompatActivity() {
-
-    lateinit var binding : ActivityMainBinding
-
+    private lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        initNav()
+    }
 
-        binding.mainToHomeBtn.setOnClickListener {
-            supportFragmentManager
-                .beginTransaction()
-                .replace(R.id.main_frm, HomeFragment())
-                .commitAllowingStateLoss()
+    private fun initNav(){
+        binding.bottomNav.background = null
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.frameLayout, OperationsFragment())
+            .commitAllowingStateLoss()
 
-            setSupportActionBar(binding.toolbar)
-            getSupportActionBar()?.setDisplayShowCustomEnabled(true)
-            getSupportActionBar()?.setDisplayShowTitleEnabled(false) //기본 제목을 없애줍니다.
-            getSupportActionBar()?.setDisplayHomeAsUpEnabled(true)
+        binding.bottomNav.setOnItemSelectedListener { item ->
+            when(item.itemId){
+                R.id.operations -> {
+                    binding.floatingButton.setOnClickListener {
+                        Toast.makeText(applicationContext,"oper", Toast.LENGTH_SHORT).show()
+                    }
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frameLayout, OperationsFragment())
+                        .commitAllowingStateLoss()
+                    return@setOnItemSelectedListener true
+                }
+                R.id.account -> {
+                    binding.floatingButton.setOnClickListener {
+                        Toast.makeText(applicationContext,"account", Toast.LENGTH_SHORT).show()
+                    }
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frameLayout, AccountFragment())
+                        .commitAllowingStateLoss()
+                    return@setOnItemSelectedListener true
+                }
+            }
+            false
         }
     }
 }

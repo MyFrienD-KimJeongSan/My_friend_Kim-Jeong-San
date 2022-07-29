@@ -18,7 +18,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
+        <activity
+            android:name=".operation.SecondCalculationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".operation.FirstCalculationActivity"
+            android:exported="false" />
         <activity android:name=".MainActivity"></activity>
         <activity android:name=".SignUpActivity"></activity>
     </application>
