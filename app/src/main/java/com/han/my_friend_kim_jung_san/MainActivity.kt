@@ -19,11 +19,24 @@ class MainActivity : AppCompatActivity() {
     private fun initNav(){
         binding.bottomNav.background = null
         supportFragmentManager.beginTransaction()
-            .replace(R.id.frameLayout, OperationsFragment())
+            .replace(R.id.frameLayout, HomeFragment())
             .commitAllowingStateLoss()
+
+        binding.floatingButton.setOnClickListener {
+            Toast.makeText(applicationContext,"home", Toast.LENGTH_SHORT).show()
+        }
 
         binding.bottomNav.setOnItemSelectedListener { item ->
             when(item.itemId){
+                R.id.home -> {
+                    binding.floatingButton.setOnClickListener {
+                        Toast.makeText(applicationContext,"home", Toast.LENGTH_SHORT).show()
+                    }
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frameLayout, HomeFragment())
+                        .commitAllowingStateLoss()
+                    return@setOnItemSelectedListener true
+                }
                 R.id.operations -> {
                     binding.floatingButton.setOnClickListener {
                         Toast.makeText(applicationContext,"oper", Toast.LENGTH_SHORT).show()

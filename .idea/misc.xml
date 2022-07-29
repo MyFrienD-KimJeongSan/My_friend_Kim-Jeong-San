@@ -3,7 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-
         <entry key="..\:/Users/HanKwanJin/AndroidStudioProjects/My_friend_Kim-Jeong-San/app/src/main/res/drawable/bottom_layout.xml" value="0.2215" />
         <entry key="..\:/Users/HanKwanJin/AndroidStudioProjects/My_friend_Kim-Jeong-San/app/src/main/res/drawable/cursor_color.xml" value="0.225" />
         <entry key="..\:/Users/HanKwanJin/AndroidStudioProjects/My_friend_Kim-Jeong-San/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.1" />
@@ -13,24 +12,17 @@
         <entry key="..\:/Users/HanKwanJin/AndroidStudioProjects/My_friend_Kim-Jeong-San/app/src/main/res/layout/account_item.xml" value="0.3619791666666667" />
         <entry key="..\:/Users/HanKwanJin/AndroidStudioProjects/My_friend_Kim-Jeong-San/app/src/main/res/layout/activity_first_calculation.xml" value="0.33" />
         <entry key="..\:/Users/HanKwanJin/AndroidStudioProjects/My_friend_Kim-Jeong-San/app/src/main/res/layout/activity_first_culculation.xml" value="0.3401268115942029" />
-        <entry key="..\:/Users/HanKwanJin/AndroidStudioProjects/My_friend_Kim-Jeong-San/app/src/main/res/layout/activity_main.xml" value="0.33" />
+        <entry key="..\:/Users/HanKwanJin/AndroidStudioProjects/My_friend_Kim-Jeong-San/app/src/main/res/layout/activity_login.xml" value="0.3619791666666667" />
+        <entry key="..\:/Users/HanKwanJin/AndroidStudioProjects/My_friend_Kim-Jeong-San/app/src/main/res/layout/activity_main.xml" value="0.16" />
         <entry key="..\:/Users/HanKwanJin/AndroidStudioProjects/My_friend_Kim-Jeong-San/app/src/main/res/layout/activity_second_calculation.xml" value="0.22" />
+        <entry key="..\:/Users/HanKwanJin/AndroidStudioProjects/My_friend_Kim-Jeong-San/app/src/main/res/layout/calendar_day_layout.xml" value="0.3619791666666667" />
         <entry key="..\:/Users/HanKwanJin/AndroidStudioProjects/My_friend_Kim-Jeong-San/app/src/main/res/layout/fragment_account.xml" value="0.33" />
-        <entry key="..\:/Users/HanKwanJin/AndroidStudioProjects/My_friend_Kim-Jeong-San/app/src/main/res/layout/fragment_home.xml" value="0.10028653295128939" />
+        <entry key="..\:/Users/HanKwanJin/AndroidStudioProjects/My_friend_Kim-Jeong-San/app/src/main/res/layout/fragment_home.xml" value="0.18" />
         <entry key="..\:/Users/HanKwanJin/AndroidStudioProjects/My_friend_Kim-Jeong-San/app/src/main/res/layout/fragment_operations.xml" value="0.14" />
         <entry key="..\:/Users/HanKwanJin/AndroidStudioProjects/My_friend_Kim-Jeong-San/app/src/main/res/layout/menu_item.xml" value="0.21603260869565216" />
         <entry key="..\:/Users/HanKwanJin/AndroidStudioProjects/My_friend_Kim-Jeong-San/app/src/main/res/layout/my_account_item.xml" value="0.25" />
         <entry key="..\:/Users/HanKwanJin/AndroidStudioProjects/My_friend_Kim-Jeong-San/app/src/main/res/menu/bottom_app_bar_menu.xml" value="0.3234375" />
         <entry key="..\:/Users/HanKwanJin/AndroidStudioProjects/My_friend_Kim-Jeong-San/app/src/main/res/menu/bottom_nav_menu.xml" value="0.12037037037037036" />
-
-        <entry key="..\:/Users/HanKwanJin/AndroidStudioProjects/My_friend_Kim-Jeong-San/app/src/main/res/layout/activity_main.xml" value="0.31145833333333334" />
-        <entry key="app/src/main/res/drawable/rectangle.xml" value="0.2275" />
-        <entry key="app/src/main/res/font/font.xml" value="0.22962962962962963" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.2953125" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.2513702392578125" />
-        <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.2953125" />
-        <entry key="app/src/main/res/layout/calendar_day_layout.xml" value="0.2953125" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.2696594238281251" />
       </map>
     </option>
   </component>
