@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/home"
+        android:icon="@drawable/fi_home"
+        android:title="홈"/>
+    <item
+        android:id="@+id/operations"
+        android:icon="@drawable/math_operations"
+        android:title="바로정산"/>
+    <item
+        android:id="@+id/placeholder"
+        android:title="" />
+
+    <item
+        android:id="@+id/chat"
+        android:icon="@drawable/chat_circle"
+        android:title="모임방"/>
+    <item
+        android:id="@+id/account"
+        android:icon="@drawable/calendar_blank"
+        android:title="계좌번호부"/>
+
+</menu>
