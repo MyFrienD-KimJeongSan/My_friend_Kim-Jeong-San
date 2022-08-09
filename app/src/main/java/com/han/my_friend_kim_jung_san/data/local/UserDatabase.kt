@@ -1,9 +1,10 @@
-package com.han.my_friend_kim_jung_san
+package com.han.my_friend_kim_jung_san.data.local
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.han.my_friend_kim_jung_san.data.entity.User
 
 @Database(entities = [User::class], version = 1)
 abstract class UserDatabase :RoomDatabase() {

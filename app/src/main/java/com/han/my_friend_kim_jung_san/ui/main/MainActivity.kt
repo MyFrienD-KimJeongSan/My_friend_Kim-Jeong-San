@@ -1,11 +1,13 @@
-package com.han.my_friend_kim_jung_san
+package com.han.my_friend_kim_jung_san.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
-import com.han.my_friend_kim_jung_san.account.AccountFragment
+import com.han.my_friend_kim_jung_san.HomeFragment
+import com.han.my_friend_kim_jung_san.R
+import com.han.my_friend_kim_jung_san.ui.account.AccountFragment
 import com.han.my_friend_kim_jung_san.databinding.ActivityMainBinding
-import com.han.my_friend_kim_jung_san.operation.OperationsFragment
+import com.han.my_friend_kim_jung_san.ui.calculation.OperationsFragment
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding

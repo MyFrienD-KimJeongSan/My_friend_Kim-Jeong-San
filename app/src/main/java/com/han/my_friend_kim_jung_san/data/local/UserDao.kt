@@ -1,13 +1,14 @@
-package com.han.my_friend_kim_jung_san
+package com.han.my_friend_kim_jung_san.data.local
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
+import com.han.my_friend_kim_jung_san.data.entity.User
 
 @Dao
 interface UserDao {
     @Insert
-    fun insert(user:User)
+    fun insert(user: User)
 
     @Query("SELECT * FROM UserTable")
     fun getUsers() : List<User>

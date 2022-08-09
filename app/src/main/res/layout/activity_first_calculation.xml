@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".operation.FirstCalculationActivity">
+    tools:context=".ui.calculation.FirstCalculationActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/topLayout"
@@ -16,6 +16,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageButton
+            android:id="@+id/backArrowIBtn"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:layout_marginStart="16dp"
@@ -30,16 +31,16 @@
             android:layout_height="match_parent"
             android:layout_marginTop="16dp"
             android:layout_marginBottom="16dp"
-            android:fontFamily="@font/sans_kr"
+            android:fontFamily="@font/notosans_kr"
             android:gravity="center"
             android:includeFontPadding="false"
-            android:text="1/N"
-            android:textColor="@color/text_color"
+            android:text="@string/_1_n"
+            android:textColor="@color/black"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"/>
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <View
@@ -64,10 +65,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
-            android:fontFamily="@font/sans_kr"
+            android:fontFamily="@font/notosans_kr"
             android:includeFontPadding="false"
             android:text="사용 금액 "
-            android:textColor="#222b45"
+            android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/firstCardView"
@@ -77,7 +78,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/sans_kr"
+            android:fontFamily="@font/notosans_kr"
             android:includeFontPadding="false"
             android:text="*"
             android:textColor="#b3261e"
@@ -92,10 +93,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
-            android:fontFamily="@font/sans_kr"
+            android:fontFamily="@font/notosans_kr"
             android:includeFontPadding="false"
             android:text="인원 "
-            android:textColor="#222b45"
+            android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/secondCardView"
@@ -105,7 +106,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/sans_kr"
+            android:fontFamily="@font/notosans_kr"
             android:includeFontPadding="false"
             android:text="*"
             android:textColor="#b3261e"
@@ -121,7 +122,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
-            android:fontFamily="@font/sans_kr"
+            android:fontFamily="@font/notosans_kr"
             android:includeFontPadding="false"
             android:text="정산 금액 "
             android:textColor="@color/sky_blue"
@@ -148,19 +149,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <EditText
-                    android:id="@+id/costEditText"
+                <TextView
+                    android:id="@+id/costInputTextView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="14dp"
                     android:layout_marginEnd="30dp"
-                    android:background="@android:color/transparent"
-                    android:fontFamily="@font/sans_kr"
-                    android:gravity="center|left"
+                    android:fontFamily="@font/notosans_kr"
+                    android:gravity="center|right"
                     android:includeFontPadding="false"
-                    android:inputType="textNoSuggestions"
                     android:textColor="#8F9BB3"
-                    android:textCursorDrawable="@drawable/cursor_color"
                     android:textSize="17sp"
                     app:layout_constraintBottom_toBottomOf="@+id/wonTextView"
                     app:layout_constraintStart_toStartOf="parent"
@@ -171,10 +169,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="11dp"
-                    android:fontFamily="@font/sans_kr"
+                    android:fontFamily="@font/notosans_kr"
                     android:includeFontPadding="false"
                     android:text="원"
-                    android:textColor="#222b45"
+                    android:textColor="@color/sky_blue"
                     android:textSize="17sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -198,19 +196,16 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <EditText
-                    android:id="@+id/memberEditText"
+                <TextView
+                    android:id="@+id/memberInputTextView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="14dp"
                     android:layout_marginEnd="30dp"
-                    android:background="@android:color/transparent"
-                    android:fontFamily="@font/sans_kr"
-                    android:gravity="center|left"
+                    android:fontFamily="@font/notosans_kr"
+                    android:gravity="center|right"
                     android:includeFontPadding="false"
-                    android:inputType="textNoSuggestions"
                     android:textColor="#8F9BB3"
-                    android:textCursorDrawable="@drawable/cursor_color"
                     android:textSize="17sp"
                     app:layout_constraintBottom_toBottomOf="@+id/countTextView"
                     app:layout_constraintStart_toStartOf="parent"
@@ -221,10 +216,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="11dp"
-                    android:fontFamily="@font/sans_kr"
+                    android:fontFamily="@font/notosans_kr"
                     android:includeFontPadding="false"
                     android:text="명"
-                    android:textColor="#222b45"
+                    android:textColor="@color/black"
                     android:textSize="17sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -248,19 +243,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
 
-                <EditText
-                    android:id="@+id/resultEditText"
+                <TextView
+                    android:id="@+id/resultInputTextView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginStart="14dp"
                     android:layout_marginEnd="30dp"
                     android:background="@android:color/transparent"
-                    android:fontFamily="@font/sans_kr"
-                    android:gravity="center|left"
+                    android:fontFamily="@font/notosans_kr"
+                    android:gravity="center|right"
                     android:includeFontPadding="false"
-                    android:inputType="textNoSuggestions"
                     android:textColor="#8F9BB3"
-                    android:textCursorDrawable="@drawable/cursor_color"
                     android:textSize="17sp"
                     app:layout_constraintBottom_toBottomOf="@+id/resultWonTextView"
                     app:layout_constraintStart_toStartOf="parent"
@@ -271,10 +264,10 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="11dp"
-                    android:fontFamily="@font/sans_kr"
+                    android:fontFamily="@font/notosans_kr"
                     android:includeFontPadding="false"
                     android:text="원"
-                    android:textColor="#222b45"
+                    android:textColor="@color/black"
                     android:textSize="17sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -297,7 +290,8 @@
             android:id="@+id/acButton"
             android:layout_width="66dp"
             android:layout_height="66dp"
-            android:background="@drawable/ac"
+            android:background="@drawable/clicked_button_ac"
+            android:onClick="buttonClicked"
             app:layout_constraintBottom_toTopOf="@+id/sevenButton"
             app:layout_constraintEnd_toStartOf="@+id/plusMinusButton"
             app:layout_constraintStart_toStartOf="parent"
@@ -308,7 +302,8 @@
             android:id="@+id/plusMinusButton"
             android:layout_width="66dp"
             android:layout_height="66dp"
-            android:background="@drawable/plus_minus"
+            android:onClick="buttonClicked"
+            android:background="@drawable/clicked_button_plus_minus"
             app:layout_constraintBottom_toBottomOf="@+id/acButton"
             app:layout_constraintEnd_toStartOf="@+id/modButton"
             app:layout_constraintStart_toEndOf="@+id/acButton"
@@ -318,8 +313,7 @@
             android:id="@+id/modButton"
             android:layout_width="71dp"
             android:layout_height="65dp"
-
-            android:background="@drawable/mod"
+            android:background="@drawable/clicked_button_mod"
             app:layout_constraintBottom_toBottomOf="@id/plusMinusButton"
             app:layout_constraintEnd_toStartOf="@+id/divideButton"
             app:layout_constraintStart_toEndOf="@+id/plusMinusButton"
@@ -330,6 +324,7 @@
             android:layout_width="66dp"
             android:layout_height="66dp"
             android:background="@drawable/divide"
+            android:onClick="buttonClicked"
             app:layout_constraintBottom_toBottomOf="@id/modButton"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/modButton"
@@ -340,7 +335,8 @@
             android:layout_width="66dp"
             android:layout_height="66dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/seven"
+            android:background="@drawable/clicked_button7"
+            android:onClick="buttonClicked"
             app:layout_constraintBottom_toTopOf="@+id/fourButton"
             app:layout_constraintStart_toStartOf="@+id/acButton"
             app:layout_constraintTop_toBottomOf="@+id/acButton" />
@@ -349,7 +345,8 @@
             android:id="@+id/eightButton"
             android:layout_width="66dp"
             android:layout_height="66dp"
-            android:background="@drawable/eight"
+            android:background="@drawable/clicked_button8"
+            android:onClick="buttonClicked"
             app:layout_constraintBottom_toBottomOf="@+id/sevenButton"
             app:layout_constraintStart_toStartOf="@+id/plusMinusButton"
             app:layout_constraintTop_toTopOf="@+id/sevenButton" />
@@ -358,7 +355,8 @@
             android:id="@+id/nineButton"
             android:layout_width="66dp"
             android:layout_height="66dp"
-            android:background="@drawable/nine"
+            android:background="@drawable/clicked_button9"
+            android:onClick="buttonClicked"
             app:layout_constraintBottom_toBottomOf="@+id/eightButton"
             app:layout_constraintStart_toStartOf="@id/modButton"
             app:layout_constraintTop_toTopOf="@+id/eightButton" />
@@ -368,6 +366,7 @@
             android:layout_width="66dp"
             android:layout_height="66dp"
             android:background="@drawable/multi"
+            android:onClick="buttonClicked"
             app:layout_constraintStart_toStartOf="@+id/divideButton"
             app:layout_constraintTop_toTopOf="@+id/nineButton" />
 
@@ -376,7 +375,8 @@
             android:layout_width="66dp"
             android:layout_height="66dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/four"
+            android:background="@drawable/clicked_button4"
+            android:onClick="buttonClicked"
             app:layout_constraintBottom_toTopOf="@+id/oneButton"
             app:layout_constraintStart_toStartOf="@+id/sevenButton"
             app:layout_constraintTop_toBottomOf="@+id/sevenButton" />
@@ -385,7 +385,8 @@
             android:id="@+id/fiveButton"
             android:layout_width="66dp"
             android:layout_height="66dp"
-            android:background="@drawable/five"
+            android:background="@drawable/clicked_button5"
+            android:onClick="buttonClicked"
             app:layout_constraintStart_toStartOf="@+id/eightButton"
             app:layout_constraintTop_toTopOf="@+id/fourButton" />
 
@@ -393,7 +394,8 @@
             android:id="@+id/sixButton"
             android:layout_width="66dp"
             android:layout_height="66dp"
-            android:background="@drawable/six"
+            android:background="@drawable/clicked_button6"
+            android:onClick="buttonClicked"
             app:layout_constraintStart_toStartOf="@+id/nineButton"
             app:layout_constraintTop_toTopOf="@+id/fiveButton" />
 
@@ -402,6 +404,7 @@
             android:layout_width="66dp"
             android:layout_height="66dp"
             android:background="@drawable/minus"
+            android:onClick="buttonClicked"
             app:layout_constraintStart_toStartOf="@+id/multiButton"
             app:layout_constraintTop_toTopOf="@+id/sixButton" />
 
@@ -410,7 +413,8 @@
             android:layout_width="66dp"
             android:layout_height="66dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/one"
+            android:background="@drawable/clicked_button1"
+            android:onClick="buttonClicked"
             app:layout_constraintBottom_toTopOf="@+id/zeroButton"
             app:layout_constraintStart_toStartOf="@+id/fourButton"
             app:layout_constraintTop_toBottomOf="@+id/fourButton" />
@@ -419,7 +423,8 @@
             android:id="@+id/twoButton"
             android:layout_width="66dp"
             android:layout_height="66dp"
-            android:background="@drawable/two"
+            android:background="@drawable/clicked_button2"
+            android:onClick="buttonClicked"
             app:layout_constraintStart_toStartOf="@+id/fiveButton"
             app:layout_constraintTop_toTopOf="@+id/oneButton" />
 
@@ -427,7 +432,8 @@
             android:id="@+id/threeButton"
             android:layout_width="66dp"
             android:layout_height="66dp"
-            android:background="@drawable/three"
+            android:background="@drawable/clicked_button3"
+            android:onClick="buttonClicked"
             app:layout_constraintStart_toStartOf="@+id/sixButton"
             app:layout_constraintTop_toTopOf="@+id/twoButton" />
 
@@ -436,6 +442,7 @@
             android:layout_width="66dp"
             android:layout_height="66dp"
             android:background="@drawable/plus"
+            android:onClick="buttonClicked"
             app:layout_constraintStart_toStartOf="@+id/minusButton"
             app:layout_constraintTop_toTopOf="@+id/threeButton" />
 
@@ -444,7 +451,8 @@
             android:layout_width="154dp"
             android:layout_height="66dp"
             android:layout_marginTop="10dp"
-            android:background="@drawable/zero"
+            android:background="@drawable/clicked_button0"
+            android:onClick="buttonClicked"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="@+id/oneButton"
             app:layout_constraintTop_toBottomOf="@+id/oneButton" />
@@ -453,14 +461,17 @@
             android:id="@+id/dotButton"
             android:layout_width="66dp"
             android:layout_height="66dp"
-            android:background="@drawable/dot"
+            android:background="@drawable/clicked_button_dot"
+            android:onClick="buttonClicked"
             app:layout_constraintStart_toStartOf="@+id/threeButton"
             app:layout_constraintTop_toTopOf="@+id/zeroButton" />
 
         <ImageButton
+            android:id="@+id/equalButton"
             android:layout_width="66dp"
             android:layout_height="66dp"
             android:background="@drawable/equal"
+            android:onClick="buttonClicked"
             app:layout_constraintStart_toStartOf="@+id/plusButton"
             app:layout_constraintTop_toTopOf="@+id/dotButton" />
     </androidx.constraintlayout.widget.ConstraintLayout>

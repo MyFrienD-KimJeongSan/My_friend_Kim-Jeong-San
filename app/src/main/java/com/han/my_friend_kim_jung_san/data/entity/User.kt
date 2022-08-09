@@ -1,4 +1,4 @@
-package com.han.my_friend_kim_jung_san
+package com.han.my_friend_kim_jung_san.data.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
