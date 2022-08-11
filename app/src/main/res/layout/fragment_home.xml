@@ -56,7 +56,13 @@
         app:lcv_textColor="@color/calendar_day_text"
         app:lcv_selectionColor="@color/calendar_selection"
         app:lcv_accentColor="@color/calendar_accent"
-        />
+        >
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/settlement_schedule_rcv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </jp.co.recruit_mp.android.lightcalendarview.LightCalendarView>
 
     <TextView
         android:id="@+id/diaryTextView"
@@ -133,11 +139,6 @@
         android:layout_marginRight="8dp"
         android:visibility="invisible">
     </Button>
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/settlement_schedule_rcv"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
