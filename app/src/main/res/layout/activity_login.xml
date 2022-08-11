@@ -1,197 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <TextView
+        android:id="@+id/splashTitleTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="50dp"
+        android:fontFamily="@font/sans_kr"
+        android:includeFontPadding="false"
+        android:text="@string/splash_title"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/line"
+        android:layout_width="148dp"
+        android:layout_height="19dp"
+        android:layout_marginStart="8dp"
+        android:alpha="0.3"
+        android:background="#6F97FF"
+        app:layout_constraintBottom_toBottomOf="@+id/splashTitleTV"
+        app:layout_constraintStart_toStartOf="@+id/splashTitleTV" />
+
+    <TextView
+        android:id="@+id/splashSubTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/splash_sub"
+        android:textColor="@color/gray_text_color"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@+id/splashTitleTV"
+        app:layout_constraintTop_toBottomOf="@+id/splashTitleTV" />
+
+    <ImageView
+        android:id="@+id/mainPhotoIV"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools">
+        android:layout_height="wrap_content"
+        android:scaleType="fitXY"
+        android:src="@drawable/main_photo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/splashSubTV" />
 
-        <FrameLayout
-            android:id="@+id/login_frm"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@id/login_complete_btn"/>
-
-        <ImageView
-            android:id="@+id/login_headline_text"
-            android:layout_width="240dp"
-            android:layout_height="55dp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="35dp"
-            android:layout_marginTop="112dp"
-            android:src="@drawable/text_headline_login"/>
-
-        <ImageView
-            android:id="@+id/login_headline2_text"
-            android:layout_width="322dp"
-            android:layout_height="20dp"
-            app:layout_constraintTop_toBottomOf="@id/login_headline_text"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="35dp"
-            android:layout_marginTop="17dp"
-            android:src="@drawable/text_headline2_login"/>
-
-        <ImageView
-            android:id="@+id/login_email_text"
-            android:layout_width="45dp"
-            android:layout_height="19dp"
-            android:src="@drawable/text_email_login"
-            app:layout_constraintTop_toBottomOf="@id/login_headline2_text"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="34dp"
-            android:layout_marginTop="70dp"
-            />
-
-        <RelativeLayout
-            android:id="@+id/login_email_edit_textbox"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/login_email_text"
-            android:layout_marginLeft="27dp"
-            android:layout_marginRight="27dp"
-            android:layout_marginTop="16dp">
-
-            <View
-                android:id="@+id/login_email_textbox"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/rectangle" />
-
-            <EditText
-                android:id="@+id/login_email_edit_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="14dp"
-                android:layout_weight="1"
-                android:background="@android:color/transparent"
-                android:ems="10"
-                android:fontFamily="@font/notosans_kr"
-                android:hint="이메일을 입력해주세요."
-                android:inputType="textEmailAddress"
-                android:textSize="15sp"
-                app:layout_constraintStart_toStartOf="parent" />
-
-        </RelativeLayout>
-
-        <ImageView
-            android:id="@+id/login_pwd_text"
-            android:layout_width="59dp"
-            android:layout_height="19dp"
-            android:src="@drawable/text_pwd_login"
-            app:layout_constraintTop_toBottomOf="@id/login_email_edit_textbox"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="34dp"
-            android:layout_marginTop="16dp"
-            />
-
-        <RelativeLayout
-            android:id="@+id/login_pwd_edit_textbox"
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/login_pwd_text"
-            android:layout_marginLeft="27dp"
-            android:layout_marginRight="27dp"
-            android:layout_marginTop="16dp">
-
-            <View
-                android:id="@+id/login_pwd_textbox"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/rectangle">
-            </View>
-
-            <EditText
-                android:id="@+id/login_pwd_edit_text"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginStart="14dp"
-                android:layout_weight="1"
-                android:background="@android:color/transparent"
-                android:ems="10"
-                android:fontFamily="@font/notosans_kr"
-                android:hint="6자리 이상 입력해주세요."
-                android:inputType="textPassword"
-                android:textSize="15sp"
-                app:layout_constraintStart_toStartOf="parent" />
-        </RelativeLayout>
-
-        <ImageView
-            android:id="@+id/login_checkbox_login_state"
-            android:layout_width="107dp"
-            android:layout_height="17.5dp"
-            app:layout_constraintTop_toBottomOf="@id/login_pwd_edit_textbox"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="27dp"
-            android:layout_marginTop="15dp"
-            android:src="@drawable/checkbox_login_state"
-            />
-
-        <ImageView
-            android:id="@+id/login_missing_pwd_text"
-            android:layout_width="107dp"
-            android:layout_height="17.5dp"
-            app:layout_constraintTop_toTopOf="@id/login_checkbox_login_state"
-            app:layout_constraintStart_toEndOf="@id/login_checkbox_login_state"
-            android:layout_marginStart="134dp"
-            android:src="@drawable/text_question_missing_pwd_login"
-            />
-
-        <ImageView
-            android:id="@+id/login_complete_btn"
-            android:layout_width="361dp"
-            android:layout_height="50dp"
-            app:layout_constraintTop_toBottomOf="@id/login_checkbox_login_state"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginStart="25dp"
-            android:layout_marginEnd="25dp"
-            android:layout_marginTop="60dp"
-            android:src="@drawable/btn_complete_login"
-            />
-
-        <LinearLayout
-            android:id="@+id/login_to_signup_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintTop_toBottomOf="@id/login_complete_btn"
-            android:layout_marginTop="134dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            android:layout_marginBottom="40dp"
-            >
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/notosans_kr"
-                android:textStyle="normal"
-                android:textSize="12sp"
-                android:textColor="#747980"
-                android:text="계정이 없으신가요? "/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="@font/notosans_kr_medium"
-                android:textStyle="normal"
-                android:textSize="12sp"
-                android:textColor="#6f97ff"
-                android:text="회원가입 "/>
-        </LinearLayout>
-
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-</ScrollView>
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/kakaoLoginBtn"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginTop="19dp"
+        android:background="@drawable/kakao_login_button"
+        android:drawableLeft="@drawable/kakao_logo"
+        android:fontFamily="@font/sans_kr"
+        android:includeFontPadding="false"
+        android:text="@string/start_kakao"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mainPhotoIV"
+        tools:ignore="RtlHardcoded" />
+</androidx.constraintlayout.widget.ConstraintLayout>

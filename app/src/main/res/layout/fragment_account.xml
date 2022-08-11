@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".account.AccountFragment">
+    tools:context=".ui.account.AccountFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/topLayout"
@@ -15,10 +15,11 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            android:id="@+id/accountTitleTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
-            android:fontFamily="@font/sans_kr"
+            android:fontFamily="@font/notosans_kr"
             android:includeFontPadding="false"
             android:text="계좌번호부"
             android:textColor="@color/text_color"
@@ -29,7 +30,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
-            android:id="@+id/bellButton"
+            android:id="@+id/noticeBtn"
             android:layout_width="26dp"
             android:layout_height="26dp"
             android:layout_marginEnd="16dp"
@@ -83,7 +84,7 @@
             android:layout_gravity="left|center"
             android:layout_marginStart="45dp"
             android:background="@android:color/transparent"
-            android:fontFamily="@font/sans_kr"
+            android:fontFamily="@font/notosans_kr"
             android:hint="이름, 닉네임 검색"
             android:includeFontPadding="false"
             android:inputType="textNoSuggestions"
@@ -98,7 +99,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="25dp"
         android:layout_marginTop="25dp"
-        android:fontFamily="@font/sans_kr"
+        android:fontFamily="@font/notosans_kr"
         android:includeFontPadding="false"
         android:text="내 계좌"
         android:textColor="#8F9BB3"
@@ -130,7 +131,7 @@
         android:id="@+id/friendTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/sans_kr"
+        android:fontFamily="@font/notosans_kr"
         android:includeFontPadding="false"
         android:text="친구"
         android:textColor="#8F9BB3"

@@ -9,4 +9,6 @@
     <color name="white">#FFFFFFFF</color>
     <color name="sky_blue">#6f97ff</color>
     <color name="text_color">#1c1b1e</color>
+    <color name="notice_time">#8F9BB3</color>
+    <color name="gray_text_color">#8F9BB3</color>
 </resources>
