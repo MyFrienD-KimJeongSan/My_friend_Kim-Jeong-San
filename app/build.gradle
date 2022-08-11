@@ -8,17 +8,13 @@ plugins {
 android {
     compileSdk 32
 
-    viewBinding {
-        enabled true
-    }
-
     defaultConfig {
         applicationId "com.han.my_friend_kim_jung_san"
         minSdk 23
         targetSdk 32
         versionCode 1
         versionName "1.0"
-
+        buildConfigField "String", "KAKAO_API_KEY", project.properties["KAKAO_API_KEY"]
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -74,4 +70,10 @@ dependencies {
     //Glide
     implementation 'com.github.bumptech.glide:glide:4.13.2'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.13.2'
+
+    //kakao
+    implementation "com.kakao.sdk:v2-user:2.11.0" // 카카오 로그인
+    implementation "com.kakao.sdk:v2-talk:2.11.0" // 친구, 메시지(카카오톡)
+    implementation "com.kakao.sdk:v2-share:2.11.0" // 메시지(카카오톡 공유)
+
 }

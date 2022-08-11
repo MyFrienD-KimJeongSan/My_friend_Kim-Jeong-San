@@ -41,9 +41,6 @@ abstract class BaseActivity<T: ViewBinding>(private val inflate: (LayoutInflater
     }
 
 
-    // TODO: splash 화면에 나오는 텍스트에 적용할 예정임
-    fun textAnim(){
-        val animFadeIn = AnimationUtils.loadAnimation(this, R.anim.text_view_anim)
-    }
+
 
 }

@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
 import com.han.my_friend_kim_jung_san.config.XAccessTokenInterceptor
+import com.kakao.sdk.common.KakaoSdk
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -16,7 +17,8 @@ class ApplicationClass: Application() {
         const val TAG: String = "JEONG-SAN-APP"                      // Log, SharedPreference
         const val APP_DATABASE = "$TAG-DB"
 
-        const val DEV_URL: String = ""
+        const val DEV_URL: String = "http://dev.kimjeongsan.shop"
+        const val PROD_URL: String = "http://prod.kimjeongsan.shop"
         const val BASE_URL: String = DEV_URL
 
         lateinit var mSharedPreferences: SharedPreferences
@@ -25,7 +27,7 @@ class ApplicationClass: Application() {
 
     override fun onCreate() {
         super.onCreate()
-
+        KakaoSdk.init(this, BuildConfig.KAKAO_API_KEY)
         val client: OkHttpClient = OkHttpClient.Builder()
             .readTimeout(30000, TimeUnit.MILLISECONDS)
             .connectTimeout(30000, TimeUnit.MILLISECONDS)
