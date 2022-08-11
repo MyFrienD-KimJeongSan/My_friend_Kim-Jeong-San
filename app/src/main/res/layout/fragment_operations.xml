@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".operation.OperationsFragment">
+    tools:context=".ui.calculation.OperationsFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/topLayout"
@@ -17,7 +17,7 @@
         <TextView
             android:textStyle="bold"
             android:includeFontPadding="false"
-            android:fontFamily="@font/sans_kr"
+            android:fontFamily="@font/notosans_kr"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="25dp"
@@ -29,7 +29,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
-            android:id="@+id/bellButton"
+            android:id="@+id/noticeBtn"
             android:layout_width="26dp"
             android:layout_height="26dp"
             android:layout_marginEnd="16dp"
@@ -78,7 +78,7 @@
             <TextView
                 android:textStyle="bold"
                 android:includeFontPadding="false"
-                android:fontFamily="@font/sans_kr"
+                android:fontFamily="@font/notosans_kr"
                 android:id="@+id/btn1TextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -111,7 +111,7 @@
             <TextView
                 android:textStyle="bold"
                 android:includeFontPadding="false"
-                android:fontFamily="@font/sans_kr"
+                android:fontFamily="@font/notosans_kr"
                 android:layout_width="171dp"
                 android:layout_height="45dp"
                 android:layout_marginTop="10dp"
@@ -141,7 +141,7 @@
             <TextView
                 android:textStyle="bold"
                 android:includeFontPadding="false"
-                android:fontFamily="@font/sans_kr"
+                android:fontFamily="@font/notosans_kr"
                 android:id="@+id/btn2TextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -174,7 +174,7 @@
             <TextView
                 android:textStyle="bold"
                 android:includeFontPadding="false"
-                android:fontFamily="@font/sans_kr"
+                android:fontFamily="@font/notosans_kr"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"

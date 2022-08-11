@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="120dp">
+
+    <TextView
+        android:id="@+id/firstNoticeTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="25dp"
+        android:fontFamily="@font/sans_kr"
+        android:includeFontPadding="false"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="📣 ‘6월 25일 정산’ 방의 정산이 시작되었습니다!" />
+
+    <TextView
+        android:id="@+id/secondNoticeTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:fontFamily="@font/sans_kr"
+        android:includeFontPadding="false"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        app:layout_constraintStart_toStartOf="@+id/firstNoticeTV"
+        app:layout_constraintTop_toBottomOf="@+id/firstNoticeTV"
+        tools:text="모임방에서 정산 내역을 공유/ 확인하세요 💸" />
+
+    <TextView
+        android:id="@+id/timeTV"
+        android:textColor="@color/notice_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="7dp"
+        android:fontFamily="@font/sans_kr"
+        android:includeFontPadding="false"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="@id/firstNoticeTV"
+        app:layout_constraintTop_toBottomOf="@+id/secondNoticeTV"
+        tools:text="20시간 전" />
+</androidx.constraintlayout.widget.ConstraintLayout>
