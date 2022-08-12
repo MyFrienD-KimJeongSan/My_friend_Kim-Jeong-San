@@ -19,4 +19,7 @@
     <string name="splash_title">복잡한 돈 계산?! 이제는\n<b>내 친구 김정산</b> 에게 맡겨!</string>
     <string name="splash_sub">늘 복잡했던 돈 계산 이젠 빠르고 간편하게</string>
     <string name="start_kakao">카카오로 시작하기</string>
+    <string name="add_new_account">새로운 계좌 추가</string>
+    <string name="add_user">유저 추가</string>
+    <string name="add_other">따로 추가</string>
 </resources>
