@@ -22,4 +22,8 @@
     <string name="add_new_account">새로운 계좌 추가</string>
     <string name="add_user">유저 추가</string>
     <string name="add_other">따로 추가</string>
+    <string name="app_title">내 친구 김정산</string>
+    <string name="testMonth">July</string>
+    <string name="testYear">2022</string>
+    <string name="create_meeting">모임방 생성</string>
 </resources>

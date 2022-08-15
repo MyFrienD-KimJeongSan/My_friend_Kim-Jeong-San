@@ -162,17 +162,16 @@
             android:id="@+id/signup_account_number_edit_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            app:layout_constraintStart_toStartOf="parent"
-            android:ems="10"
-            android:inputType="phone"
-            android:hint="계좌번호를 입력해주세요."
-            android:background="@android:color/transparent"
-            android:fontFamily="@font/notosans_kr"
-            android:textSize="15sp"
             android:layout_centerVertical="true"
             android:layout_marginStart="14dp"
-            />
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:ems="10"
+            android:fontFamily="@font/notosans_kr"
+            android:hint="계좌번호를 입력해주세요."
+            android:inputType="phone"
+            android:textSize="15sp"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </RelativeLayout>
 

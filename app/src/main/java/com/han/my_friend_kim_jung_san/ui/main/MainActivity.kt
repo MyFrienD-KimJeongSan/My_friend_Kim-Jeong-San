@@ -15,8 +15,12 @@ import com.han.my_friend_kim_jung_san.databinding.ActivityMainBinding
 import com.han.my_friend_kim_jung_san.ui.BaseActivity
 import com.han.my_friend_kim_jung_san.ui.account.SlideUpDialog
 import com.han.my_friend_kim_jung_san.ui.calculation.OperationsFragment
+import com.han.my_friend_kim_jung_san.ui.home.SelectedDayListener
+import java.time.LocalDate
 
-class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
+@SuppressLint("NewApi")
+class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate), SelectedDayListener {
+    private var selectedDay: LocalDate? = null
     override fun initAfterBinding() {
         initNav()
     }
@@ -27,14 +31,14 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             .commitAllowingStateLoss()
 
         binding.floatingButton.setOnClickListener {
-            Toast.makeText(applicationContext,"home", Toast.LENGTH_SHORT).show()
+            Toast.makeText(applicationContext, selectedDay.toString(), Toast.LENGTH_SHORT).show()
         }
 
         binding.bottomNav.setOnItemSelectedListener { item ->
             when(item.itemId){
                 R.id.home -> {
                     binding.floatingButton.setOnClickListener {
-                        Toast.makeText(applicationContext,"home", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(applicationContext, selectedDay.toString(), Toast.LENGTH_SHORT).show()
                     }
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.frameLayout, HomeFragment())
@@ -45,6 +49,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                     binding.floatingButton.setOnClickListener {
                         Toast.makeText(applicationContext,"oper", Toast.LENGTH_SHORT).show()
                     }
+
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.frameLayout, OperationsFragment())
                         .commitAllowingStateLoss()
@@ -65,12 +70,15 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
     }
     @SuppressLint("InflateParams")
     private fun onSlideUpDialog() {
-        var contentView: View = (getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater).inflate(R.layout.add_account_popup, null)
+        val contentView: View = (getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater).inflate(R.layout.add_account_popup, null)
         val slideupPopup = SlideUpDialog.Builder(this)
             .setContentView(contentView)
             .create()
         slideupPopup.show()
     }
 
+    override fun selectedDay(date: LocalDate) {
+        selectedDay = date
+    }
 
 }
