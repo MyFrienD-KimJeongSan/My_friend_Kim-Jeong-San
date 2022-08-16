@@ -16,6 +16,8 @@ import com.han.my_friend_kim_jung_san.ui.BaseActivity
 import com.han.my_friend_kim_jung_san.ui.account.SlideUpDialog
 import com.han.my_friend_kim_jung_san.ui.calculation.OperationsFragment
 import com.han.my_friend_kim_jung_san.ui.home.SelectedDayListener
+import com.han.my_friend_kim_jung_san.ui.meeting.CreateMeetingActivity
+import com.kizitonwose.calendarview.utils.yearMonth
 import java.time.LocalDate
 
 @SuppressLint("NewApi")
@@ -31,14 +33,14 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             .commitAllowingStateLoss()
 
         binding.floatingButton.setOnClickListener {
-            Toast.makeText(applicationContext, selectedDay.toString(), Toast.LENGTH_SHORT).show()
+            startActivityWithInfo(CreateMeetingActivity::class.java, "day", "${selectedDay?.year.toString()}.${selectedDay?.monthValue.toString()}.${selectedDay?.dayOfMonth.toString()}")
         }
 
         binding.bottomNav.setOnItemSelectedListener { item ->
             when(item.itemId){
                 R.id.home -> {
                     binding.floatingButton.setOnClickListener {
-                        Toast.makeText(applicationContext, selectedDay.toString(), Toast.LENGTH_SHORT).show()
+                        startActivityWithInfo(CreateMeetingActivity::class.java, "day", "${selectedDay?.year.toString()}.${selectedDay?.monthValue.toString()}.${selectedDay?.dayOfMonth.toString()}")
                     }
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.frameLayout, HomeFragment())

@@ -31,6 +31,8 @@ import com.kizitonwose.calendarview.model.DayOwner
 import com.kizitonwose.calendarview.ui.DayBinder
 import com.kizitonwose.calendarview.ui.MonthHeaderFooterBinder
 import com.kizitonwose.calendarview.ui.ViewContainer
+import com.kizitonwose.calendarview.utils.next
+import com.kizitonwose.calendarview.utils.previous
 import java.lang.RuntimeException
 import java.time.LocalDate
 import java.time.YearMonth
@@ -66,7 +68,7 @@ class EventsAdapter(val onClick: (Event) -> Unit) :
 
         //todo 변경해야함
         fun bind(event: Event) {
-            binding.meet1TextView.text = event.text
+            binding.meetingTitleTV.text = event.text
         }
     }
 }
@@ -101,6 +103,7 @@ class HomeFragment : CalendarFragment(R.layout.fragment_home) {
         if (savedInstanceState == null) {
             binding.calendar.post {
                 selectDate(today)
+                selectedDayListener!!.selectedDay(today)
             }
         }
         class DayViewContainer(view: View) : ViewContainer(view) {
@@ -170,6 +173,16 @@ class HomeFragment : CalendarFragment(R.layout.fragment_home) {
             }
 
             override fun create(view: View) = MonthViewContainer(view)
+        }
+        binding.rightArrowIV.setOnClickListener {
+            binding.calendar.findFirstVisibleMonth()?.let {
+                binding.calendar.smoothScrollToMonth(it.yearMonth.next)
+            }
+        }
+        binding.leftArrowIV.setOnClickListener{
+            binding.calendar.findFirstVisibleMonth()?.let {
+                binding.calendar.smoothScrollToMonth(it.yearMonth.previous)
+            }
         }
     }
 

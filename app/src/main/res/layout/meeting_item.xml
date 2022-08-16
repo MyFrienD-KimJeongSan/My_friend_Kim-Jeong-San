@@ -22,17 +22,17 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/meetCategoryImageView"
+                android:id="@+id/meetCategoryIV"
                 android:layout_width="10dp"
                 android:layout_height="11dp"
                 android:src="@drawable/meet_category"
-                app:layout_constraintStart_toStartOf="@id/meet1TextView"
+                app:layout_constraintStart_toStartOf="@id/meetingTitleTV"
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginTop="16dp"
                 />
 
             <TextView
-                android:id="@+id/meetTimeTextView"
+                android:id="@+id/meetingTimeTV"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/notosans_kr_medium"
@@ -42,14 +42,14 @@
                 android:letterSpacing="0.06"
                 android:lineSpacingExtra="2sp"
                 android:text="2022.06.25 오후 1:00"
-                app:layout_constraintStart_toEndOf="@id/meetCategoryImageView"
+                app:layout_constraintStart_toEndOf="@id/meetCategoryIV"
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginTop="16dp"
-                app:layout_constraintBottom_toBottomOf="@id/meetCategoryImageView"
+                app:layout_constraintBottom_toBottomOf="@id/meetCategoryIV"
                 android:layout_marginStart="4dp"/>
 
             <TextView
-                android:id="@+id/meet1TextView"
+                android:id="@+id/meetingTitleTV"
                 android:textStyle="normal"
                 android:includeFontPadding="false"
                 android:fontFamily="@font/notosans_kr"
@@ -84,12 +84,12 @@
                 android:layout_height="15dp"
                 android:src="@drawable/ic_user"
                 android:layout_marginBottom="14.5dp"
-                app:layout_constraintStart_toStartOf="@id/meet1TextView"
+                app:layout_constraintStart_toStartOf="@id/meetingTitleTV"
                 app:layout_constraintBottom_toBottomOf="parent"
                 />
 
             <TextView
-                android:id="@+id/meet1TextView2"
+                android:id="@+id/meetingMemberTV"
                 android:textStyle="normal"
                 android:fontFamily="@font/notosans_kr_medium"
                 android:layout_width="wrap_content"

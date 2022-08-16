@@ -57,84 +57,93 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/topLayout" />
 
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/calendarControlCL"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="14dp"
+    <androidx.core.widget.NestedScrollView
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/topLayout">
-
-        <ImageView
-            android:id="@+id/leftArrowIV"
-            android:layout_width="34dp"
-            android:layout_height="34dp"
-            android:layout_marginStart="10dp"
-            android:src="@drawable/arrow_left"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/monthTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/sans_kr"
-            android:includeFontPadding="false"
-            android:text="@string/testMonth"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@+id/rightArrowIV"
-            app:layout_constraintStart_toEndOf="@+id/leftArrowIV"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/yearTV"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="7dp"
-            android:fontFamily="@font/sans_kr"
-            android:includeFontPadding="false"
-            android:text="@string/testYear"
-            android:textColor="@color/gray_text_color"
-            android:textSize="12sp"
-            app:layout_constraintEnd_toEndOf="@+id/monthTV"
-            app:layout_constraintStart_toStartOf="@+id/monthTV"
-            app:layout_constraintTop_toBottomOf="@+id/monthTV" />
-
-        <ImageView
-            android:id="@+id/rightArrowIV"
-            android:layout_width="34dp"
-            android:layout_height="34dp"
-            android:layout_marginEnd="10dp"
-            android:src="@drawable/arrow_right"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <LinearLayout
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calendarControlCL"
+        app:layout_constraintTop_toBottomOf="@+id/topLayout"
         android:layout_width="match_parent"
-        android:orientation="vertical"
         android:layout_height="wrap_content">
-        <com.kizitonwose.calendarview.CalendarView
-            android:id="@+id/calendar"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cv_outDateStyle="endOfGrid"
-            app:cv_dayViewResource="@layout/calendar_day"
-            app:cv_orientation="horizontal"
-            app:cv_monthHeaderResource="@layout/calendar_header"
-            app:cv_scrollMode="paged"/>
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/calendarControlCL"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="14dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/topLayout">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/meetingRoomRV"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
+                <ImageView
+                    android:id="@+id/leftArrowIV"
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
+                    android:layout_marginStart="10dp"
+                    android:src="@drawable/arrow_left"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
+                <TextView
+                    android:id="@+id/monthTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/sans_kr"
+                    android:includeFontPadding="false"
+                    android:text="@string/testMonth"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toStartOf="@+id/rightArrowIV"
+                    app:layout_constraintStart_toEndOf="@+id/leftArrowIV"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/yearTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="7dp"
+                    android:fontFamily="@font/sans_kr"
+                    android:includeFontPadding="false"
+                    android:text="@string/testYear"
+                    android:textColor="@color/gray_text_color"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toEndOf="@+id/monthTV"
+                    app:layout_constraintStart_toStartOf="@+id/monthTV"
+                    app:layout_constraintTop_toBottomOf="@+id/monthTV" />
+
+                <ImageView
+                    android:id="@+id/rightArrowIV"
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
+                    android:layout_marginEnd="10dp"
+                    android:src="@drawable/arrow_right"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/calendarControlCL"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="wrap_content">
+                <com.kizitonwose.calendarview.CalendarView
+                    android:id="@+id/calendar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cv_outDateStyle="endOfGrid"
+                    app:cv_dayViewResource="@layout/calendar_day"
+                    app:cv_orientation="horizontal"
+                    app:cv_monthHeaderResource="@layout/calendar_header"
+                    app:cv_scrollMode="paged"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/meetingRoomRV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
