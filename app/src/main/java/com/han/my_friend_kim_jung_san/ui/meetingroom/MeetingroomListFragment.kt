@@ -18,6 +18,9 @@ class MeetingroomListFragment : BaseFragment<FragmentMeetingroomListBinding>(Fra
         binding.myMeetingList.setOnClickListener {
             startNextActivity(MeetingroomActivity::class.java)
         }
+        binding.title.setOnClickListener {
+            startNextActivity(MeetingroomActivity::class.java)
+        }
         binding.bellButton.setOnClickListener {
             startNextActivity(NoticeActivity::class.java)
         }

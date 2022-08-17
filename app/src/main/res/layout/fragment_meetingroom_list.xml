@@ -15,6 +15,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            android:id="@+id/title"
             android:textStyle="normal"
             android:includeFontPadding="false"
             android:fontFamily="@font/notosans_kr"

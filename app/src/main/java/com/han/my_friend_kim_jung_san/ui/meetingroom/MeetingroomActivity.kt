@@ -12,24 +12,33 @@ import com.han.my_friend_kim_jung_san.ui.home.HomeFragment
 
 class MeetingroomActivity : BaseActivity<ActivityMeetingroomBinding>(ActivityMeetingroomBinding::inflate) {
 
+    var isOpen : Boolean = false
+
     override fun initAfterBinding() {
 
-        openMenu()
-        closeMenu()
+        binding.menuOpenBtn.setOnClickListener {
+            openMenu()
+        }
+        binding.menuCloseBtn.setOnClickListener {
+            closeMenu()
+        }
 
+        openOptionMenu()
     }
 
     private fun openMenu() {
-        binding.menuOpenBtn.setOnClickListener {
+        if (isOpen == false) {
             binding.closeBottomMenuCL.visibility = View.GONE
             binding.openBottomMenuCL.visibility = View.VISIBLE
+            isOpen = true
         }
     }
 
     private fun closeMenu() {
-        binding.menuOpenBtn.setOnClickListener {
+        if  (isOpen == true) {
             binding.openBottomMenuCL.visibility = View.GONE
             binding.closeBottomMenuCL.visibility = View.VISIBLE
+            isOpen = false
         }
     }
 
