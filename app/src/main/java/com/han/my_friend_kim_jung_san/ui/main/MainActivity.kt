@@ -73,15 +73,6 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                         .commitAllowingStateLoss()
                     return@setOnItemSelectedListener true
                 }
-                R.id.chat -> {
-                    binding.floatingButton.setOnClickListener {
-                        Toast.makeText(applicationContext, "myMeetingList", Toast.LENGTH_SHORT).show()
-                    }
-                    supportFragmentManager.beginTransaction()
-                        .replace(R.id.frameLayout, MeetingroomListFragment())
-                        .commitAllowingStateLoss()
-                    return@setOnItemSelectedListener true
-                }
             }
             false
         }
