@@ -70,7 +70,7 @@
             android:name=".ui.signup.SignUpActivity"
             android:exported="true" />
         <activity
-            android:name=".ui.meetingroom.MeetingroomActivity"
+            android:name=".ui.chat.ChatActivity"
             android:exported="false"/>
     </application>
 

@@ -2,12 +2,9 @@ package com.han.my_friend_kim_jung_san.ui.main
 
 import android.annotation.SuppressLint
 import android.content.Context
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Toast
-import androidx.core.content.ContextCompat
 import com.han.my_friend_kim_jung_san.ui.home.HomeFragment
 import com.han.my_friend_kim_jung_san.R
 import com.han.my_friend_kim_jung_san.ui.account.AccountFragment
@@ -19,9 +16,7 @@ import com.han.my_friend_kim_jung_san.ui.calculation.OperationsFragment
 import com.han.my_friend_kim_jung_san.ui.home.SelectedDayListener
 import com.han.my_friend_kim_jung_san.ui.meeting.CreateMeetingActivity
 import com.han.my_friend_kim_jung_san.ui.meeting.MeetingRoomFragment
-import com.kizitonwose.calendarview.utils.yearMonth
 import java.time.LocalDate
-import com.han.my_friend_kim_jung_san.ui.meetingroom.MeetingroomListFragment
 
 @SuppressLint("NewApi")
 class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate), SelectedDayListener {

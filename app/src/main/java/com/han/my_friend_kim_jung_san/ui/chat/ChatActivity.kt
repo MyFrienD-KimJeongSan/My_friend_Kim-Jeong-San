@@ -1,16 +1,13 @@
-package com.han.my_friend_kim_jung_san.ui.meetingroom
+package com.han.my_friend_kim_jung_san.ui.chat
 
-import android.os.Bundle
 import android.view.View
 import android.widget.PopupMenu
-import androidx.core.view.marginBottom
 import com.han.my_friend_kim_jung_san.R
-import com.han.my_friend_kim_jung_san.databinding.ActivityMainBinding
 import com.han.my_friend_kim_jung_san.databinding.ActivityMeetingroomBinding
 import com.han.my_friend_kim_jung_san.ui.BaseActivity
 import com.han.my_friend_kim_jung_san.ui.home.HomeFragment
 
-class MeetingroomActivity : BaseActivity<ActivityMeetingroomBinding>(ActivityMeetingroomBinding::inflate) {
+class ChatActivity : BaseActivity<ActivityMeetingroomBinding>(ActivityMeetingroomBinding::inflate) {
 
     var isOpen : Boolean = false
 
