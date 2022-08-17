@@ -1,7 +1,6 @@
 package com.han.my_friend_kim_jung_san.ui.account
 
-import android.view.animation.AnimationUtils
-import com.han.my_friend_kim_jung_san.R
+
 import com.han.my_friend_kim_jung_san.databinding.FragmentAccountBinding
 import com.han.my_friend_kim_jung_san.ui.BaseFragment
 import com.han.my_friend_kim_jung_san.ui.notice.NoticeActivity
@@ -20,4 +19,5 @@ class AccountFragment : BaseFragment<FragmentAccountBinding>(FragmentAccountBind
             startNextActivity(MyPageActivity::class.java)
         }
     }
+
 }

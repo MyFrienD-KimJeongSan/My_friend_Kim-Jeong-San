@@ -1,8 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.han.my_friend_kim_jung_san">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
 
     <application
         android:name=".ApplicationClass"
@@ -14,15 +19,26 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ui.meeting.invite.InviteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.meeting.MeetingRoomActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.meeting.CreateMeetingActivity"
+            android:exported="false" />
+        <activity
             android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
+
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
 
                 <!-- Redirect URI: "kakao${NATIVE_APP_KEY}://oauth" -->
-                <data android:host="oauth"
+                <data
+                    android:host="oauth"
                     android:scheme="kakao309260c823ae60a87126b7c79902f5ab" />
             </intent-filter>
         </activity>
@@ -34,9 +50,7 @@
             android:exported="false" />
         <activity
             android:name=".ui.main.MainActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".ui.calculation.SecondCalculationActivity"
             android:exported="false" />
@@ -55,6 +69,9 @@
         <activity
             android:name=".ui.signup.SignUpActivity"
             android:exported="true" />
+        <activity
+            android:name=".ui.chat.ChatActivity"
+            android:exported="false"/>
     </application>
 
 </manifest>

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/popup"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+    <!-- Header -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/popUpBarCL"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/pop_up_bar"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/addNewAccountTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/sans_kr"
+        android:includeFontPadding="false"
+        android:text="@string/add_new_account"
+        android:textColor="@color/black"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/popUpBarCL" />
+
+    <ImageView
+        android:id="@+id/addFriendIV"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginTop="40dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/basic_photo"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/addNewAccountTV" />
+
+    <ImageView
+        android:id="@+id/addOtherIV"
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:layout_marginEnd="60dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/other"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/addFriendIV" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/sans_kr"
+        android:includeFontPadding="false"
+        android:text="@string/add_user"
+        android:textColor="@color/gray_text_color"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/addFriendIV"
+        app:layout_constraintStart_toStartOf="@+id/addFriendIV"
+        app:layout_constraintTop_toBottomOf="@+id/addFriendIV" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/sans_kr"
+        android:includeFontPadding="false"
+        android:text="@string/add_other"
+        android:textColor="@color/gray_text_color"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@+id/addOtherIV"
+        app:layout_constraintStart_toStartOf="@+id/addOtherIV"
+        app:layout_constraintTop_toBottomOf="@+id/addOtherIV" />
+</androidx.constraintlayout.widget.ConstraintLayout>
