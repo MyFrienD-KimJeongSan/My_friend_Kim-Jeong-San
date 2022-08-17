@@ -3,6 +3,7 @@ package com.han.my_friend_kim_jung_san.ui.home
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.View
@@ -25,6 +26,8 @@ import com.han.my_friend_kim_jung_san.extensions.layoutInflater
 import com.han.my_friend_kim_jung_san.extensions.setTextColorRes
 import com.han.my_friend_kim_jung_san.ui.BaseFragment
 import com.han.my_friend_kim_jung_san.ui.CalendarFragment
+import com.han.my_friend_kim_jung_san.ui.mypage.MyPageActivity
+import com.han.my_friend_kim_jung_san.ui.notice.NoticeActivity
 import com.kizitonwose.calendarview.model.CalendarDay
 import com.kizitonwose.calendarview.model.CalendarMonth
 import com.kizitonwose.calendarview.model.DayOwner
@@ -91,7 +94,6 @@ class HomeFragment : CalendarFragment(R.layout.fragment_home) {
         binding.meetingRoomRV.apply {
             layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
             adapter = eventsAdapter
-            addItemDecoration(DividerItemDecoration(requireContext(), RecyclerView.VERTICAL))
         }
 
         val daysOfWeek = daysOfWeekFromLocale()
@@ -106,6 +108,14 @@ class HomeFragment : CalendarFragment(R.layout.fragment_home) {
                 selectedDayListener!!.selectedDay(today)
             }
         }
+        binding.noticeBtn.setOnClickListener {
+            val intent = Intent(context, NoticeActivity::class.java)
+            startActivity(intent)
+        }
+        binding.myPageButton.setOnClickListener {
+            val intent = Intent(context, MyPageActivity::class.java)
+            startActivity(intent)
+        }
         class DayViewContainer(view: View) : ViewContainer(view) {
             lateinit var day: CalendarDay
             val binding = CalendarDayBinding.bind(view)
@@ -115,6 +125,10 @@ class HomeFragment : CalendarFragment(R.layout.fragment_home) {
                     if (day.owner == DayOwner.THIS_MONTH) {
                         selectDate(day.date)
                         selectedDayListener!!.selectedDay(day.date)
+
+                        //이벤트 추가
+//                        events[day.date] = events[day.date].orEmpty().plus(Event("1", "1", day.date))
+//                        updateAdapterForDate(day.date)
                     }
                 }
             }

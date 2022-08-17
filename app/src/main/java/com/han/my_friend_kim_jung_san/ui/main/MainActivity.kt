@@ -17,6 +17,7 @@ import com.han.my_friend_kim_jung_san.ui.account.SlideUpDialog
 import com.han.my_friend_kim_jung_san.ui.calculation.OperationsFragment
 import com.han.my_friend_kim_jung_san.ui.home.SelectedDayListener
 import com.han.my_friend_kim_jung_san.ui.meeting.CreateMeetingActivity
+import com.han.my_friend_kim_jung_san.ui.meeting.MeetingRoomFragment
 import com.kizitonwose.calendarview.utils.yearMonth
 import java.time.LocalDate
 
@@ -54,6 +55,15 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
 
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.frameLayout, OperationsFragment())
+                        .commitAllowingStateLoss()
+                    return@setOnItemSelectedListener true
+                }
+                R.id.chat -> {
+                    binding.floatingButton.setOnClickListener {
+                        showToast("chat")
+                    }
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frameLayout, MeetingRoomFragment())
                         .commitAllowingStateLoss()
                     return@setOnItemSelectedListener true
                 }

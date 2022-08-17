@@ -14,6 +14,12 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ui.meeting.invite.InviteActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.meeting.MeetingRoomActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.meeting.CreateMeetingActivity"
             android:exported="false" />
         <activity
@@ -39,7 +45,7 @@
             android:exported="false" />
         <activity
             android:name=".ui.main.MainActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".ui.calculation.SecondCalculationActivity"
             android:exported="false" />
