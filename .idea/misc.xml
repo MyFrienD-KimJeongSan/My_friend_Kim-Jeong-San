@@ -63,6 +63,7 @@
         <entry key="app/src/main/res/layout/fragment_meet_open_menu.xml" value="0.30585072835286453" />
         <entry key="app/src/main/res/layout/fragment_meet_open_plus.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/layout/fragment_meetingroom.xml" value="0.2953125" />
+        <entry key="app/src/main/res/layout/fragment_meetingroom_list.xml" value="0.2521970383664396" />
         <entry key="app/src/main/res/layout/fragment_operations.xml" value="0.2953125" />
         <entry key="app/src/main/res/layout/meeting_item.xml" value="0.2953125" />
         <entry key="app/src/main/res/layout/meetingroom_menu.xml" value="0.3098958333333333" />

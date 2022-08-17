@@ -157,7 +157,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                android:layout_marginStart="12dp"
+                android:layout_marginStart="5dp"
                 />
 
             <View
@@ -267,7 +267,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="17dp"
+            android:layout_marginStart="9dp"
             android:visibility="visible"/>
 
         <View
