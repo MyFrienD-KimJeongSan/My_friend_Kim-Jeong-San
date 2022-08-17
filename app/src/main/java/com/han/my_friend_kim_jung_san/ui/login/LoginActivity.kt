@@ -22,6 +22,9 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
         binding.kakaoLoginBtn.setOnClickListener {
             login()
         }
+        binding.mainPhotoIV.setOnClickListener {
+            startActivityWithClear(MainActivity::class.java)
+        }
 
     }
     private fun initAnim(){

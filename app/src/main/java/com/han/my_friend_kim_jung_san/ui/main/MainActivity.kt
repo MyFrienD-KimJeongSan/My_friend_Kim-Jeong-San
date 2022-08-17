@@ -8,6 +8,7 @@ import com.han.my_friend_kim_jung_san.R
 import com.han.my_friend_kim_jung_san.ui.account.AccountFragment
 import com.han.my_friend_kim_jung_san.databinding.ActivityMainBinding
 import com.han.my_friend_kim_jung_san.ui.calculation.OperationsFragment
+import com.han.my_friend_kim_jung_san.ui.meetingroom.MeetingroomListFragment
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -54,6 +55,15 @@ class MainActivity : AppCompatActivity() {
                     }
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.frameLayout, AccountFragment())
+                        .commitAllowingStateLoss()
+                    return@setOnItemSelectedListener true
+                }
+                R.id.chat -> {
+                    binding.floatingButton.setOnClickListener {
+                        Toast.makeText(applicationContext, "myMeetingList", Toast.LENGTH_SHORT).show()
+                    }
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frameLayout, MeetingroomListFragment())
                         .commitAllowingStateLoss()
                     return@setOnItemSelectedListener true
                 }
