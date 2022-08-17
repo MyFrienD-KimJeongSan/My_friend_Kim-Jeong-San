@@ -1,13 +1,14 @@
 package com.han.my_friend_kim_jung_san.ui.chat
 
+import android.annotation.SuppressLint
 import android.view.View
 import android.widget.PopupMenu
 import com.han.my_friend_kim_jung_san.R
-import com.han.my_friend_kim_jung_san.databinding.ActivityMeetingroomBinding
+import com.han.my_friend_kim_jung_san.databinding.ActivityChatBinding
 import com.han.my_friend_kim_jung_san.ui.BaseActivity
 import com.han.my_friend_kim_jung_san.ui.home.HomeFragment
 
-class ChatActivity : BaseActivity<ActivityMeetingroomBinding>(ActivityMeetingroomBinding::inflate) {
+class ChatActivity : BaseActivity<ActivityChatBinding>(ActivityChatBinding::inflate) {
 
     var isOpen : Boolean = false
 
@@ -39,6 +40,7 @@ class ChatActivity : BaseActivity<ActivityMeetingroomBinding>(ActivityMeetingroo
         }
     }
 
+    @SuppressLint("NewApi")
     private fun openOptionMenu() {
         binding.optionBtn.setOnClickListener {
             var popupMenu = PopupMenu(applicationContext, it)
