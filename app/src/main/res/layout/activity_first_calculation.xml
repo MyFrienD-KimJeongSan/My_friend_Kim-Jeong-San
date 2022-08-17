@@ -2,13 +2,13 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/n_1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ui.calculation.FirstCalculationActivity">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/topLayout"
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
@@ -511,4 +511,11 @@
             app:layout_constraintStart_toEndOf="@+id/captureButton"
             app:layout_constraintTop_toTopOf="@+id/captureButton" />
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerHorizontal="true"
+        android:scaleType="fitCenter" />
 </androidx.constraintlayout.widget.ConstraintLayout>

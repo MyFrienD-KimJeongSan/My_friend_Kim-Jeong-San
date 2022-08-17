@@ -1,18 +1,35 @@
 package com.han.my_friend_kim_jung_san.ui.calculation
 
+import android.Manifest
 import android.annotation.SuppressLint
+import android.app.Activity
+import android.content.ContentValues
+import android.content.Intent
+import android.graphics.Bitmap
+import android.graphics.Canvas
+import android.graphics.Color
+import android.net.Uri
+import android.os.*
 import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
+import android.provider.MediaStore
+import android.util.Log
 import android.view.View
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.Toast
+import androidx.cardview.widget.CardView
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.han.my_friend_kim_jung_san.R
 import com.han.my_friend_kim_jung_san.databinding.ActivityFirstCalculationBinding
 import com.han.my_friend_kim_jung_san.ui.BaseActivity
+import java.io.File
+import java.io.FileOutputStream
+import java.io.OutputStream
 import java.text.DecimalFormat
 import kotlin.math.cos
 
+@Suppress("DEPRECATION")
 class FirstCalculationActivity : BaseActivity<ActivityFirstCalculationBinding>(ActivityFirstCalculationBinding::inflate) {
     private var isOperation = false
     private var hasOperation = false
@@ -31,7 +48,20 @@ class FirstCalculationActivity : BaseActivity<ActivityFirstCalculationBinding>(A
         binding.backArrowIBtn.setOnClickListener{
             finish()
         }
+
+        // write permission to access the storage
+        ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE), 1)
+        ActivityCompat.requestPermissions(this, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), 1)
+
+        binding.captureButton.setOnClickListener {
+            val b: Bitmap = Screenshot.takeScreenshotOfRootView(binding.imageView)
+
+            if (b != null) {
+                saveMediaToStorage(b)
+            }
+        }
     }
+
     private fun currentClickedField(){
         binding.costInputTextView.setOnClickListener {
             costFocus = true
@@ -324,5 +354,82 @@ class FirstCalculationActivity : BaseActivity<ActivityFirstCalculationBinding>(A
         isOperation = false
         hasOperation = false
         flag = false
+    }
+
+    companion object Screenshot {
+        private fun takeScreenshot(view: View): Bitmap {
+            view.isDrawingCacheEnabled = true
+            view.buildDrawingCache(true)
+            val b = Bitmap.createBitmap(view.drawingCache)
+            view.isDrawingCacheEnabled = false
+            return b
+        }
+        fun takeScreenshotOfRootView(v: View): Bitmap {
+            return takeScreenshot(v.rootView)
+        }
+    }
+
+    private fun getScreenShotFromView(v: View): Bitmap? {
+        // create a bitmap object
+        var screenshot: Bitmap? = null
+        try {
+            // inflate screenshot object
+            // with Bitmap.createBitmap it
+            // requires three parameters
+            // width and height of the view and
+            // the background color
+            screenshot = Bitmap.createBitmap(v.measuredWidth, v.measuredHeight, Bitmap.Config.ARGB_8888)
+            // Now draw this bitmap on a canvas
+            val canvas = Canvas(screenshot)
+            v.draw(canvas)
+        } catch (e: Exception) {
+            Log.e("GFG", "Failed to capture screenshot because:" + e.message)
+        }
+        // return the bitmap
+        return screenshot
+    }
+
+
+    // this method saves the image to gallery
+    private fun saveMediaToStorage(bitmap: Bitmap) {
+        // Generating a file name
+        val filename = "${System.currentTimeMillis()}.jpg"
+
+        // Output stream
+        var fos: OutputStream? = null
+
+        // For devices running android >= Q
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            // getting the contentResolver
+            this.contentResolver?.also { resolver ->
+
+                // Content resolver will process the contentvalues
+                val contentValues = ContentValues().apply {
+
+                    // putting file information in content values
+                    put(MediaStore.MediaColumns.DISPLAY_NAME, filename)
+                    put(MediaStore.MediaColumns.MIME_TYPE, "image/jpg")
+                    put(MediaStore.MediaColumns.RELATIVE_PATH, Environment.DIRECTORY_PICTURES)
+                }
+
+                // Inserting the contentValues to
+                // contentResolver and getting the Uri
+                val imageUri: Uri? = resolver.insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, contentValues)
+
+                // Opening an outputstream with the Uri that we got
+                fos = imageUri?.let { resolver.openOutputStream(it) }
+            }
+        } else {
+            // These for devices running on android < Q
+            val imagesDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES)
+            val image = File(imagesDir, filename)
+            fos = FileOutputStream(image)
+        }
+
+        fos?.use {
+            // Finally writing the bitmap to the output stream that we opened
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, it)
+            Toast.makeText(this , "Captured View and saved to Gallery" , Toast.LENGTH_SHORT).show()
+        }
     }
 }

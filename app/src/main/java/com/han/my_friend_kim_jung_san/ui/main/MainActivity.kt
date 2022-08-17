@@ -15,11 +15,13 @@ import com.han.my_friend_kim_jung_san.databinding.ActivityMainBinding
 import com.han.my_friend_kim_jung_san.ui.BaseActivity
 import com.han.my_friend_kim_jung_san.ui.account.SlideUpDialog
 import com.han.my_friend_kim_jung_san.ui.calculation.OperationsFragment
+
 import com.han.my_friend_kim_jung_san.ui.home.SelectedDayListener
 import com.han.my_friend_kim_jung_san.ui.meeting.CreateMeetingActivity
 import com.han.my_friend_kim_jung_san.ui.meeting.MeetingRoomFragment
 import com.kizitonwose.calendarview.utils.yearMonth
 import java.time.LocalDate
+import com.han.my_friend_kim_jung_san.ui.meetingroom.MeetingroomListFragment
 
 @SuppressLint("NewApi")
 class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate), SelectedDayListener {
@@ -73,6 +75,15 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
                     }
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.frameLayout, AccountFragment())
+                        .commitAllowingStateLoss()
+                    return@setOnItemSelectedListener true
+                }
+                R.id.chat -> {
+                    binding.floatingButton.setOnClickListener {
+                        Toast.makeText(applicationContext, "myMeetingList", Toast.LENGTH_SHORT).show()
+                    }
+                    supportFragmentManager.beginTransaction()
+                        .replace(R.id.frameLayout, MeetingroomListFragment())
                         .commitAllowingStateLoss()
                     return@setOnItemSelectedListener true
                 }
