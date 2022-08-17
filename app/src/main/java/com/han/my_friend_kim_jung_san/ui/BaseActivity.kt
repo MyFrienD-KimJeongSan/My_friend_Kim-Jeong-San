@@ -40,7 +40,11 @@ abstract class BaseActivity<T: ViewBinding>(private val inflate: (LayoutInflater
         startActivity(intent)
     }
 
-
+    fun startActivityWithInfo(activity: Class<*>?, key: String?, value: String?) {
+        val intent = Intent(this, activity)
+        intent.putExtra(key, value)
+        startActivity(intent)
+    }
 
 
 }

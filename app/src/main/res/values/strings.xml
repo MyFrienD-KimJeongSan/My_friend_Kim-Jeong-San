@@ -19,4 +19,21 @@
     <string name="splash_title">복잡한 돈 계산?! 이제는\n<b>내 친구 김정산</b> 에게 맡겨!</string>
     <string name="splash_sub">늘 복잡했던 돈 계산 이젠 빠르고 간편하게</string>
     <string name="start_kakao">카카오로 시작하기</string>
+    <string name="add_new_account">새로운 계좌 추가</string>
+    <string name="add_user">유저 추가</string>
+    <string name="add_other">따로 추가</string>
+    <string name="app_title">내 친구 김정산</string>
+    <string name="testMonth">July</string>
+    <string name="testYear">2022</string>
+    <string name="create_meeting">모임방 생성</string>
+    <string name="meeting_room_information">모임방 정보</string>
+    <string name="title_hint">제목을 입력해주세요.</string>
+    <string name="start_day">시작 날짜</string>
+    <string name="start_time">시작 시간</string>
+    <string name="invite">참가자 초대</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="invite_member">참가자 초대</string>
+    <string name="check">확인</string>
+    <string name="recent_invite">최근에 초대</string>
 </resources>

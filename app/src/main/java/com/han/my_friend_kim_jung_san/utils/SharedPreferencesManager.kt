@@ -7,7 +7,6 @@ import com.han.my_friend_kim_jung_san.ApplicationClass.Companion.mSharedPreferen
 fun saveJwt(jwtToken: String) {
     val editor = mSharedPreferences.edit()
     editor.putString(X_ACCESS_TOKEN, jwtToken)
-
     editor.apply()
 }
 
