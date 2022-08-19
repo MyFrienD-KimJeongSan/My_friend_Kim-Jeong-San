@@ -16,11 +16,13 @@ import com.han.my_friend_kim_jung_san.ui.calculation.OperationsFragment
 import com.han.my_friend_kim_jung_san.ui.home.SelectedDayListener
 import com.han.my_friend_kim_jung_san.ui.meeting.CreateMeetingActivity
 import com.han.my_friend_kim_jung_san.ui.meeting.MeetingRoomFragment
+import java.text.DecimalFormat
 import java.time.LocalDate
 
 @SuppressLint("NewApi")
 class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate), SelectedDayListener {
     private var selectedDay: LocalDate? = null
+
     override fun initAfterBinding() {
         initNav()
     }
@@ -31,14 +33,14 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
             .commitAllowingStateLoss()
 
         binding.floatingButton.setOnClickListener {
-            startActivityWithInfo(CreateMeetingActivity::class.java, "day", "${selectedDay?.year.toString()}.${selectedDay?.monthValue.toString()}.${selectedDay?.dayOfMonth.toString()}")
+            startActivityWithInfo(CreateMeetingActivity::class.java, "day", "${selectedDay?.year.toString()}.${String.format("%02d",selectedDay?.monthValue)}.${String.format("%02d", selectedDay?.dayOfMonth)}")
         }
 
         binding.bottomNav.setOnItemSelectedListener { item ->
             when(item.itemId){
                 R.id.home -> {
                     binding.floatingButton.setOnClickListener {
-                        startActivityWithInfo(CreateMeetingActivity::class.java, "day", "${selectedDay?.year.toString()}.${selectedDay?.monthValue.toString()}.${selectedDay?.dayOfMonth.toString()}")
+                        startActivityWithInfo(CreateMeetingActivity::class.java, "day", "${selectedDay?.year.toString()}.${String.format("%02d",selectedDay?.monthValue)}.${String.format("%02d", selectedDay?.dayOfMonth)}")
                     }
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.frameLayout, HomeFragment())

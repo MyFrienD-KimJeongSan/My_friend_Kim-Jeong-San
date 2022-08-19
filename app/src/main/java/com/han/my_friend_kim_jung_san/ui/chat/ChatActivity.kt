@@ -3,6 +3,7 @@ package com.han.my_friend_kim_jung_san.ui.chat
 import android.annotation.SuppressLint
 import android.view.View
 import android.widget.PopupMenu
+import com.han.my_friend_kim_jung_san.ApplicationClass.Companion.BASE_URL
 import com.han.my_friend_kim_jung_san.R
 import com.han.my_friend_kim_jung_san.databinding.ActivityChatBinding
 import com.han.my_friend_kim_jung_san.ui.BaseActivity
@@ -11,9 +12,7 @@ import com.han.my_friend_kim_jung_san.ui.home.HomeFragment
 class ChatActivity : BaseActivity<ActivityChatBinding>(ActivityChatBinding::inflate) {
 
     var isOpen : Boolean = false
-
     override fun initAfterBinding() {
-
         binding.menuOpenBtn.setOnClickListener {
             openMenu()
         }
