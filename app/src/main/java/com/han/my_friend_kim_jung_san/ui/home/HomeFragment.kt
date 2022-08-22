@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
@@ -17,6 +18,9 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.han.my_friend_kim_jung_san.R
+import com.han.my_friend_kim_jung_san.data.entity.Data
+import com.han.my_friend_kim_jung_san.data.entity.User
+import com.han.my_friend_kim_jung_san.data.remote.room.RoomService
 import com.han.my_friend_kim_jung_san.databinding.CalendarDayBinding
 import com.han.my_friend_kim_jung_san.databinding.CalendarHeaderBinding
 import com.han.my_friend_kim_jung_san.databinding.FragmentHomeBinding
@@ -26,8 +30,10 @@ import com.han.my_friend_kim_jung_san.extensions.layoutInflater
 import com.han.my_friend_kim_jung_san.extensions.setTextColorRes
 import com.han.my_friend_kim_jung_san.ui.BaseFragment
 import com.han.my_friend_kim_jung_san.ui.CalendarFragment
+import com.han.my_friend_kim_jung_san.ui.chat.ChatActivity
 import com.han.my_friend_kim_jung_san.ui.mypage.MyPageActivity
 import com.han.my_friend_kim_jung_san.ui.notice.NoticeActivity
+import com.kakao.sdk.user.UserApiClient
 import com.kizitonwose.calendarview.model.CalendarDay
 import com.kizitonwose.calendarview.model.CalendarMonth
 import com.kizitonwose.calendarview.model.DayOwner
@@ -40,12 +46,12 @@ import java.lang.RuntimeException
 import java.time.LocalDate
 import java.time.YearMonth
 import java.time.format.DateTimeFormatter
+import java.util.*
 
-data class Event(val id: String, val text: String, val date: LocalDate)
 
-class EventsAdapter(val onClick: (Event) -> Unit) :
+class EventsAdapter(val onClick: (Data) -> Unit) :
     RecyclerView.Adapter<EventsAdapter.EventsViewHolder>() {
-    val events = mutableListOf<Event>()
+    val events = mutableListOf<Data>()
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -70,21 +76,39 @@ class EventsAdapter(val onClick: (Event) -> Unit) :
         }
 
         //todo 변경해야함
-        fun bind(event: Event) {
-            binding.meetingTitleTV.text = event.text
+        @SuppressLint("SetTextI18n")
+        fun bind(data: Data) {
+            when(data.color){
+                "red" -> binding.meetCategoryIV.setImageResource(R.drawable.red)
+                "orange" -> binding.meetCategoryIV.setImageResource(R.drawable.orange)
+                "yellow" -> binding.meetCategoryIV.setImageResource(R.drawable.yellow)
+                "green" -> binding.meetCategoryIV.setImageResource(R.drawable.green)
+                "blue" -> binding.meetCategoryIV.setImageResource(R.drawable.blue)
+                "purple" -> binding.meetCategoryIV.setImageResource(R.drawable.purple)
+            }
+            binding.meetingTimeTV.text = "${data.startDate} ${data.startTime}"
+            binding.meetingTitleTV.text = data.name
+
+            var member = ""
+            data.userList?.forEach {
+                member += "${it.name},"
+            }
+            member.dropLast(1)
+            binding.meetingMemberTV.text = member
         }
     }
 }
 
 @RequiresApi(Build.VERSION_CODES.O)
-class HomeFragment : CalendarFragment(R.layout.fragment_home) {
+class HomeFragment : CalendarFragment(R.layout.fragment_home), SearchView {
     private val eventsAdapter = EventsAdapter {
-        Toast.makeText(context, "이벤트", Toast.LENGTH_SHORT).show()
+        val intent = Intent(context, ChatActivity::class.java)
+        startActivity(intent)
     }
     private var selectedDate: LocalDate? = null
     private val today = LocalDate.now()
     private val monthTitleFormatter = DateTimeFormatter.ofPattern("MMMM")
-    private val events = mutableMapOf<LocalDate, List<Event>>()
+    private val events = mutableMapOf<LocalDate, List<Data>>()
     private lateinit var binding: FragmentHomeBinding
     private var selectedDayListener: SelectedDayListener? = null
 
@@ -94,6 +118,7 @@ class HomeFragment : CalendarFragment(R.layout.fragment_home) {
         binding.meetingRoomRV.apply {
             layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
             adapter = eventsAdapter
+            addItemDecoration(DividerItemDecoration(requireContext(), RecyclerView.VERTICAL))
         }
 
         val daysOfWeek = daysOfWeekFromLocale()
@@ -126,9 +151,8 @@ class HomeFragment : CalendarFragment(R.layout.fragment_home) {
                         selectDate(day.date)
                         selectedDayListener!!.selectedDay(day.date)
 
-                        //이벤트 추가
-//                        events[day.date] = events[day.date].orEmpty().plus(Event("1", "1", day.date))
-//                        updateAdapterForDate(day.date)
+                        //일정 요청
+                        searchSchedule()
                     }
                 }
             }
@@ -138,9 +162,12 @@ class HomeFragment : CalendarFragment(R.layout.fragment_home) {
             override fun bind(container: DayViewContainer, day: CalendarDay) {
                 container.day = day
                 val textView = container.binding.dayTV
-                val blueDotView = container.binding.blueDot
-                val skyBlueDotView = container.binding.skyBlueDot
-                val greenDotView = container.binding.greenDot
+                val red = container.binding.red
+                val orange = container.binding.orange
+                val yellow = container.binding.yellow
+                val green = container.binding.green
+                val blue = container.binding.blue
+                val purple = container.binding.purple
 
                 textView.text = day.date.dayOfMonth.toString()
                 if (day.owner == DayOwner.THIS_MONTH) {
@@ -151,18 +178,30 @@ class HomeFragment : CalendarFragment(R.layout.fragment_home) {
                             textView.setTextColorRes(R.color.white)
                             textView.setBackgroundResource(R.drawable.selected_day)
                             //todo 색깔별로 처리해야함
-                            blueDotView.makeInVisible()
-
                         }
                         else -> {
                             textView.setTextColorRes(R.color.black)
                             textView.background = null
-                            blueDotView.isVisible = events[day.date].orEmpty().isNotEmpty()
+                            events[day.date].orEmpty().forEach {
+                                when(it.color){
+                                    "red" -> red.makeVisible()
+                                    "orange" -> orange.makeVisible()
+                                    "yellow" -> yellow.makeVisible()
+                                    "green" -> green.makeVisible()
+                                    "blue" -> blue.makeVisible()
+                                    "purple" -> purple.makeVisible()
+                                }
+                            }
                         }
                     }
                 } else {
                     textView.setTextColorRes(R.color.gray_text_color)
-                    blueDotView.makeInVisible()
+                    red.makeInVisible()
+                    orange.makeInVisible()
+                    yellow.makeInVisible()
+                    green.makeInVisible()
+                    blue.makeInVisible()
+                    purple.makeInVisible()
                 }
             }
         }
@@ -229,6 +268,37 @@ class HomeFragment : CalendarFragment(R.layout.fragment_home) {
     override fun onDetach() {
         super.onDetach()
         selectedDayListener = null
+    }
+
+    override fun onSearchSuccess(data: List<Data>?) {
+        Log.i("search", "검색 성공")
+        //일정 검색 성공했을 경우
+        data?.forEach { data ->
+            selectedDate?.let {
+                events[it] = events[it].orEmpty().plus(data)
+                updateAdapterForDate(it)
+            }
+        }
+    }
+
+    override fun onSearchFailure(code: Int?, message: String?) {
+        Log.i("search", "$code $message 검색 실패")
+    }
+    private fun searchSchedule(){
+        UserApiClient.instance.me { user, error ->
+            if (error != null) {
+                Log.e("user", "사용자 정보 요청 실패", error)
+            }
+            else if (user != null) {
+                Log.i("user", "사용자 정보 요청 성공" +
+                        "\n회원번호: ${user.id}" +
+                        "\n이메일: ${user.kakaoAccount?.email}" +
+                        "\n닉네임: ${user.kakaoAccount?.profile?.nickname}" +
+                        "\n프로필사진: ${user.kakaoAccount?.profile?.thumbnailImageUrl}")
+                RoomService.searchRoom(this, "${user.id}", selectedDate.toString())
+            }
+        }
+
     }
 }
 

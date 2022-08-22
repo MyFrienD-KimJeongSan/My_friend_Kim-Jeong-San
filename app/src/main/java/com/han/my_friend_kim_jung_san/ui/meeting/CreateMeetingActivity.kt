@@ -1,26 +1,29 @@
 package com.han.my_friend_kim_jung_san.ui.meeting
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import android.util.Log
-import android.view.View
+import android.annotation.SuppressLint
+import android.app.TimePickerDialog
+import android.graphics.Color
+import androidx.core.content.ContextCompat
+
 import androidx.core.view.isEmpty
-import androidx.core.view.isVisible
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.han.my_friend_kim_jung_san.R
 import com.han.my_friend_kim_jung_san.data.entity.Room
 import com.han.my_friend_kim_jung_san.data.entity.User
 import com.han.my_friend_kim_jung_san.data.remote.room.RoomService
 import com.han.my_friend_kim_jung_san.databinding.ActivityCreateMeetingBinding
-import com.han.my_friend_kim_jung_san.extensions.makeInVisible
 import com.han.my_friend_kim_jung_san.extensions.makeVisible
 import com.han.my_friend_kim_jung_san.ui.BaseActivity
 import com.han.my_friend_kim_jung_san.ui.meeting.invite.RoomMemberRVAdapter
+import java.text.SimpleDateFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 class CreateMeetingActivity: BaseActivity<ActivityCreateMeetingBinding>(ActivityCreateMeetingBinding::inflate), CreateMeetingRoomView {
     var stateColor: String? = null
     var users = ArrayList<User>()
     private var day: String? = null
+    @SuppressLint("SetTextI18n", "SimpleDateFormat")
     override fun initAfterBinding() {
         binding.dayTV.text = this.intent.getStringExtra("day")
         day = binding.dayTV.text.toString().replace(".", "-")
@@ -37,6 +40,25 @@ class CreateMeetingActivity: BaseActivity<ActivityCreateMeetingBinding>(Activity
         binding.backArrowIBtn.setOnClickListener {
             finish()
         }
+        binding.timeIV.setOnClickListener {
+            val cal = Calendar.getInstance()
+            val timeListener = TimePickerDialog.OnTimeSetListener { timePicker, hourOfDay, minute ->
+
+                cal.set(Calendar.MINUTE, minute)
+                var am_pm = ""
+                if (hourOfDay in 0..11) {
+                    am_pm = "AM"
+                    cal.set(Calendar.HOUR_OF_DAY, hourOfDay)
+                } else {
+                    am_pm = "PM"
+                    cal.set(Calendar.HOUR_OF_DAY, hourOfDay - 12)
+                }
+                binding.timeTV.text = "$am_pm ${SimpleDateFormat("HH:mm").format(cal.time)}"
+
+            }
+            TimePickerDialog(this,timeListener, cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE), false).show()
+        }
+
         binding.stateRedIBtn.setOnClickListener {
             stateColor = "red"
             binding.stateColorIV.makeVisible()
@@ -149,7 +171,7 @@ class CreateMeetingActivity: BaseActivity<ActivityCreateMeetingBinding>(Activity
     }
 
     override fun onCreateFailure(code: Int?, message: String?) {
-        showToast("모임방 생성 실패패")
+        showToast("모임방 생성 실패")
     }
 
     private fun createRoom(){
@@ -161,16 +183,13 @@ class CreateMeetingActivity: BaseActivity<ActivityCreateMeetingBinding>(Activity
             showToast("상태 색깔을 정해주세요!")
             return
         }
-        if(binding.timeET.text.toString().isEmpty()){
-            showToast("시작 시간을 입력해 주세요!")
-            return
-        }
+
         if(binding.inviteRV.isEmpty()){
             showToast("참가자 초대를 해주세요!")
             return
         }
         val title = binding.titleET.text.toString()
-        val startTime = binding.timeET.text.toString()
+        val startTime = binding.timeTV.text.toString()
         val room = Room(stateColor!!, listOf(123,234,345,456),title, day!!,startTime)
 
         RoomService.createRoom(this, room)

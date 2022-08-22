@@ -42,6 +42,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
+            android:id="@+id/editTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
@@ -112,20 +113,16 @@
             android:layout_height="match_parent"
             android:background="@drawable/rectangle" />
 
-        <EditText
-            android:id="@+id/nameET"
+        <TextView
+            android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginStart="14dp"
-            android:background="@android:color/transparent"
-            android:ems="10"
             android:fontFamily="@font/notosans_kr"
             android:includeFontPadding="false"
-            android:inputType="textNoSuggestions"
             android:text="@string/kimjeongsan"
-            android:textColor="@color/gray_text_color"
-            android:textCursorDrawable="@drawable/cursor_color"
+            android:textColor="@color/black"
             android:textSize="15sp"
             app:layout_constraintStart_toStartOf="parent" />
     </RelativeLayout>
@@ -159,20 +156,16 @@
             android:layout_height="match_parent"
             android:background="@drawable/rectangle" />
 
-        <EditText
-            android:id="@+id/emailET"
+        <TextView
+            android:id="@+id/email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginStart="14dp"
-            android:background="@android:color/transparent"
-            android:ems="10"
             android:fontFamily="@font/notosans_kr"
             android:includeFontPadding="false"
-            android:inputType="textNoSuggestions"
             android:text="@string/tmp_email"
-            android:textColor="@color/gray_text_color"
-            android:textCursorDrawable="@drawable/cursor_color"
+            android:textColor="@color/black"
             android:textSize="15sp"
             app:layout_constraintStart_toStartOf="parent" />
     </RelativeLayout>

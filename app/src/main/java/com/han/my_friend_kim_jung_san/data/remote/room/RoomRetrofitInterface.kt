@@ -14,7 +14,7 @@ interface RoomRetrofitInterface {
 
     @GET("/room/schedule")
     fun searchRoom(
-        @Query("userId") userId: Int,
-        @Query("date") date: String
+        @Query("userId") userId: String?,
+        @Query("date") date: String?
     ):Call<ScheduleResponse>
 }

@@ -35,7 +35,7 @@
         <entry key="..\:/Users/HanKwanJin/AndroidStudioProjects/My_friend_Kim-Jeong-San/app/src/main/res/drawable/unselected_button.xml" value="0.1465" />
         <entry key="..\:/Users/HanKwanJin/AndroidStudioProjects/My_friend_Kim-Jeong-San/app/src/main/res/layout/account_item.xml" value="0.3619791666666667" />
         <entry key="..\:/Users/HanKwanJin/AndroidStudioProjects/My_friend_Kim-Jeong-San/app/src/main/res/layout/activity_chat.xml" value="0.13100710405348934" />
-        <entry key="..\:/Users/HanKwanJin/AndroidStudioProjects/My_friend_Kim-Jeong-San/app/src/main/res/layout/activity_create_meeting.xml" value="0.33" />
+        <entry key="..\:/Users/HanKwanJin/AndroidStudioProjects/My_friend_Kim-Jeong-San/app/src/main/res/layout/activity_create_meeting.xml" value="0.25" />
         <entry key="..\:/Users/HanKwanJin/AndroidStudioProjects/My_friend_Kim-Jeong-San/app/src/main/res/layout/activity_first_calculation.xml" value="0.67" />
         <entry key="..\:/Users/HanKwanJin/AndroidStudioProjects/My_friend_Kim-Jeong-San/app/src/main/res/layout/activity_first_culculation.xml" value="0.3401268115942029" />
         <entry key="..\:/Users/HanKwanJin/AndroidStudioProjects/My_friend_Kim-Jeong-San/app/src/main/res/layout/activity_invite.xml" value="0.33" />
@@ -45,24 +45,25 @@
         <entry key="..\:/Users/HanKwanJin/AndroidStudioProjects/My_friend_Kim-Jeong-San/app/src/main/res/layout/activity_meetingroom.xml" value="0.29713552800342025" />
         <entry key="..\:/Users/HanKwanJin/AndroidStudioProjects/My_friend_Kim-Jeong-San/app/src/main/res/layout/activity_my_page.xml" value="0.25" />
         <entry key="..\:/Users/HanKwanJin/AndroidStudioProjects/My_friend_Kim-Jeong-San/app/src/main/res/layout/activity_notice.xml" value="0.33" />
-        <entry key="..\:/Users/HanKwanJin/AndroidStudioProjects/My_friend_Kim-Jeong-San/app/src/main/res/layout/activity_second_calculation.xml" value="0.22" />
-        <entry key="..\:/Users/HanKwanJin/AndroidStudioProjects/My_friend_Kim-Jeong-San/app/src/main/res/layout/activity_sign_up.xml" value="0.33" />
+        <entry key="..\:/Users/HanKwanJin/AndroidStudioProjects/My_friend_Kim-Jeong-San/app/src/main/res/layout/activity_second_calculation.xml" value="0.33" />
+        <entry key="..\:/Users/HanKwanJin/AndroidStudioProjects/My_friend_Kim-Jeong-San/app/src/main/res/layout/activity_sign_up.xml" value="0.25" />
         <entry key="..\:/Users/HanKwanJin/AndroidStudioProjects/My_friend_Kim-Jeong-San/app/src/main/res/layout/add_account_popup.xml" value="0.25" />
         <entry key="..\:/Users/HanKwanJin/AndroidStudioProjects/My_friend_Kim-Jeong-San/app/src/main/res/layout/add_acount_dialog_base.xml" value="0.33" />
-        <entry key="..\:/Users/HanKwanJin/AndroidStudioProjects/My_friend_Kim-Jeong-San/app/src/main/res/layout/calendar_day.xml" value="0.22" />
+        <entry key="..\:/Users/HanKwanJin/AndroidStudioProjects/My_friend_Kim-Jeong-San/app/src/main/res/layout/calendar_day.xml" value="0.18789013732833956" />
         <entry key="..\:/Users/HanKwanJin/AndroidStudioProjects/My_friend_Kim-Jeong-San/app/src/main/res/layout/calendar_day_layout.xml" value="0.25" />
         <entry key="..\:/Users/HanKwanJin/AndroidStudioProjects/My_friend_Kim-Jeong-San/app/src/main/res/layout/calendar_day_legend.xml" value="0.27533133817870886" />
         <entry key="..\:/Users/HanKwanJin/AndroidStudioProjects/My_friend_Kim-Jeong-San/app/src/main/res/layout/calendar_header.xml" value="0.27533133817870886" />
         <entry key="..\:/Users/HanKwanJin/AndroidStudioProjects/My_friend_Kim-Jeong-San/app/src/main/res/layout/fragment_account.xml" value="0.33" />
-        <entry key="..\:/Users/HanKwanJin/AndroidStudioProjects/My_friend_Kim-Jeong-San/app/src/main/res/layout/fragment_home.xml" value="0.33" />
+        <entry key="..\:/Users/HanKwanJin/AndroidStudioProjects/My_friend_Kim-Jeong-San/app/src/main/res/layout/fragment_home.xml" value="0.25" />
         <entry key="..\:/Users/HanKwanJin/AndroidStudioProjects/My_friend_Kim-Jeong-San/app/src/main/res/layout/fragment_meeting_room.xml" value="0.25" />
         <entry key="..\:/Users/HanKwanJin/AndroidStudioProjects/My_friend_Kim-Jeong-San/app/src/main/res/layout/fragment_meetingroom_list.xml" value="0.29713552800342025" />
         <entry key="..\:/Users/HanKwanJin/AndroidStudioProjects/My_friend_Kim-Jeong-San/app/src/main/res/layout/fragment_operations.xml" value="0.5" />
         <entry key="..\:/Users/HanKwanJin/AndroidStudioProjects/My_friend_Kim-Jeong-San/app/src/main/res/layout/invite_item.xml" value="0.9" />
-        <entry key="..\:/Users/HanKwanJin/AndroidStudioProjects/My_friend_Kim-Jeong-San/app/src/main/res/layout/meeting_item.xml" value="0.33541666666666664" />
+        <entry key="..\:/Users/HanKwanJin/AndroidStudioProjects/My_friend_Kim-Jeong-San/app/src/main/res/layout/meeting_item.xml" value="0.67" />
         <entry key="..\:/Users/HanKwanJin/AndroidStudioProjects/My_friend_Kim-Jeong-San/app/src/main/res/layout/member_item.xml" value="0.33" />
         <entry key="..\:/Users/HanKwanJin/AndroidStudioProjects/My_friend_Kim-Jeong-San/app/src/main/res/layout/menu_item.xml" value="0.21603260869565216" />
         <entry key="..\:/Users/HanKwanJin/AndroidStudioProjects/My_friend_Kim-Jeong-San/app/src/main/res/layout/my_account_item.xml" value="0.25" />
+        <entry key="..\:/Users/HanKwanJin/AndroidStudioProjects/My_friend_Kim-Jeong-San/app/src/main/res/layout/name_item.xml" value="0.5" />
         <entry key="..\:/Users/HanKwanJin/AndroidStudioProjects/My_friend_Kim-Jeong-San/app/src/main/res/layout/notice_item.xml" value="0.5" />
         <entry key="..\:/Users/HanKwanJin/AndroidStudioProjects/My_friend_Kim-Jeong-San/app/src/main/res/menu/bottom_app_bar_menu.xml" value="0.3234375" />
         <entry key="..\:/Users/HanKwanJin/AndroidStudioProjects/My_friend_Kim-Jeong-San/app/src/main/res/menu/bottom_nav_menu.xml" value="0.12037037037037036" />

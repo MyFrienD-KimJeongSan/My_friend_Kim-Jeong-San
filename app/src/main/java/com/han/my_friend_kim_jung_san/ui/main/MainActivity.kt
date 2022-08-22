@@ -2,6 +2,7 @@ package com.han.my_friend_kim_jung_san.ui.main
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.Toast
@@ -16,6 +17,7 @@ import com.han.my_friend_kim_jung_san.ui.calculation.OperationsFragment
 import com.han.my_friend_kim_jung_san.ui.home.SelectedDayListener
 import com.han.my_friend_kim_jung_san.ui.meeting.CreateMeetingActivity
 import com.han.my_friend_kim_jung_san.ui.meeting.MeetingRoomFragment
+import com.kakao.sdk.user.UserApiClient
 import java.text.DecimalFormat
 import java.time.LocalDate
 
@@ -24,6 +26,7 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
     private var selectedDay: LocalDate? = null
 
     override fun initAfterBinding() {
+
         initNav()
     }
     private fun initNav(){

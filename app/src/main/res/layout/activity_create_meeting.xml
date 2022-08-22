@@ -189,12 +189,10 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginStart="14dp"
-            android:background="@android:color/transparent"
-            android:ems="10"
+            android:textColor="@color/gray_text_color"
             android:fontFamily="@font/notosans_kr"
             android:includeFontPadding="false"
             android:text="@string/start_day"
-            android:textCursorDrawable="@drawable/cursor_color"
             android:textSize="15sp" />
 
         <ImageView
@@ -222,18 +220,16 @@
             android:layout_height="match_parent"
             android:background="@drawable/rectangle" />
 
-        <EditText
-            android:id="@+id/timeET"
+        <TextView
+            android:id="@+id/timeTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginStart="14dp"
-            android:background="@android:color/transparent"
-            android:ems="10"
             android:fontFamily="@font/notosans_kr"
-            android:hint="@string/start_time"
+            android:text="@string/start_time"
             android:includeFontPadding="false"
-            android:textCursorDrawable="@drawable/cursor_color"
+            android:textColor="@color/gray_text_color"
             android:textSize="15sp" />
 
         <ImageView
@@ -265,6 +261,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="25dp"
+        android:layout_marginTop="17dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/inviteTV"
         tools:itemCount="1"
@@ -275,7 +272,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="25dp"
-        android:layout_marginTop="16dp"
         android:background="@drawable/invite_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

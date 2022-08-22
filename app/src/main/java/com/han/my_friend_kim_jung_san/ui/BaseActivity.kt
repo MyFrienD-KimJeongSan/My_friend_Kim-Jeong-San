@@ -45,6 +45,14 @@ abstract class BaseActivity<T: ViewBinding>(private val inflate: (LayoutInflater
         intent.putExtra(key, value)
         startActivity(intent)
     }
+    fun startActivityWithAccount(activity: Class<*>?, list: MutableMap<String, String>) {
+        val intent = Intent(this, activity)
+        intent.apply {
+            putExtra("name", list["name"])
+            putExtra("uid", list["uid"])
+        }
+        startActivity(intent)
+    }
 
 
 }
