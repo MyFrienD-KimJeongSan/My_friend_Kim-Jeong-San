@@ -36,14 +36,30 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
         binding.line.startAnimation(lineAnim)
     }
     private fun login(){
-//        UserApiClient.instance.accessTokenInfo { tokenInfo, error ->
-//            if(error != null){
-//                showToast("토큰 정보 보기 실패")
-//            }else if(tokenInfo != null){
-//                showToast("토큰 정보 보기 성공")
-//                startActivityWithClear(MainActivity::class.java)
-//            }
-//        }
+        // 토큰 정보 보기
+        UserApiClient.instance.accessTokenInfo { tokenInfo, error ->
+            if (error != null) {
+                Log.e("token", "토큰 정보 보기 실패", error)
+            }
+            else if (tokenInfo != null) {
+                Log.i("token", "토큰 정보 보기 성공" +
+                        "\n회원번호: ${tokenInfo.id}" +
+                        "\n만료시간: ${tokenInfo.expiresIn} 초")
+            }
+        }
+        UserApiClient.instance.me { user, error ->
+            if (error != null) {
+                Log.e("user", "사용자 정보 요청 실패", error)
+            }
+            else if (user != null) {
+                Log.i("user", "사용자 정보 요청 성공" +
+                        "\n회원번호: ${user.id}" +
+                        "\n이메일: ${user.kakaoAccount?.email}" +
+                        "\n닉네임: ${user.kakaoAccount?.profile?.nickname}" +
+                        "\n프로필사진: ${user.kakaoAccount?.profile?.thumbnailImageUrl}")
+            }
+        }
+
         val callback: (OAuthToken?, Throwable?) -> Unit = { token, error ->
             if (error != null) {
                 when {

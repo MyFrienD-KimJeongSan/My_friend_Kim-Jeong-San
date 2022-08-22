@@ -194,10 +194,11 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
             app:layout_constraintTop_toBottomOf="@id/openBottomMenuCL"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             android:layout_marginTop="60dp"
             android:orientation="horizontal">
 
@@ -209,9 +210,10 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 android:layout_marginTop="37dp"
-                android:layout_marginStart="41dp"/>
+                />
 
             <ImageButton
+                android:id="@+id/bottomMenuCamera"
                 android:layout_width="53dp"
                 android:layout_height="77dp"
                 android:background="@drawable/btn_meet_bottom_menu2"
@@ -221,6 +223,7 @@
                 />
 
             <ImageButton
+                android:id="@+id/bottomMenuN1"
                 android:layout_width="53dp"
                 android:layout_height="77dp"
                 android:background="@drawable/btn_meet_bottom_menu3"
@@ -229,13 +232,13 @@
                 android:layout_marginStart="40dp"/>
 
             <ImageButton
+                android:id="@+id/bottomMenuDI"
                 android:layout_width="53dp"
                 android:layout_height="77dp"
                 android:background="@drawable/btn_meet_bottom_menu4"
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginTop="37dp"
-                android:layout_marginStart="40dp"
-                android:layout_marginEnd="41dp"/>
+                android:layout_marginStart="40dp"/>
 
         </LinearLayout>
 
@@ -302,5 +305,11 @@
             android:layout_marginEnd="9dp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

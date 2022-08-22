@@ -1,25 +1,29 @@
-package com.han.my_friend_kim_jung_san.ui.meetingroom
+package com.han.my_friend_kim_jung_san.ui.meeting
 
+import android.os.Bundle
 import androidx.fragment.app.Fragment
-import com.han.my_friend_kim_jung_san.databinding.FragmentMeetingroomListBinding
-import com.han.my_friend_kim_jung_san.databinding.FragmentOperationsBinding
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import com.han.my_friend_kim_jung_san.R
+import com.han.my_friend_kim_jung_san.databinding.FragmentMeetingRoomBinding
 import com.han.my_friend_kim_jung_san.ui.BaseFragment
-import com.han.my_friend_kim_jung_san.ui.calculation.FirstCalculationActivity
-import com.han.my_friend_kim_jung_san.ui.calculation.SecondCalculationActivity
+import com.han.my_friend_kim_jung_san.ui.chat.ChatActivity
 import com.han.my_friend_kim_jung_san.ui.mypage.MyPageActivity
 import com.han.my_friend_kim_jung_san.ui.notice.NoticeActivity
 
-class MeetingroomListFragment : BaseFragment<FragmentMeetingroomListBinding>(FragmentMeetingroomListBinding::inflate) {
+
+class MeetingRoomFragment : BaseFragment<FragmentMeetingRoomBinding>(FragmentMeetingRoomBinding::inflate) {
     override fun initAfterBinding() {
         init()
     }
 
     private fun init(){
         binding.myMeetingList.setOnClickListener {
-            startNextActivity(MeetingroomActivity::class.java)
+            startNextActivity(ChatActivity::class.java)
         }
         binding.title.setOnClickListener {
-            startNextActivity(MeetingroomActivity::class.java)
+            startNextActivity(ChatActivity::class.java)
         }
         binding.bellButton.setOnClickListener {
             startNextActivity(NoticeActivity::class.java)
