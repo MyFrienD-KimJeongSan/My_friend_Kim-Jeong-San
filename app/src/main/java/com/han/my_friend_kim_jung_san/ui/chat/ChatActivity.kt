@@ -31,7 +31,6 @@ import java.util.*
 class ChatActivity : BaseActivity<ActivityChatBinding>(ActivityChatBinding::inflate) {
 
 
-    var isOpen: Boolean = false
     val CAMERA = arrayOf(Manifest.permission.CAMERA)
     val CAMERA_CODE = 98
 
@@ -44,9 +43,7 @@ class ChatActivity : BaseActivity<ActivityChatBinding>(ActivityChatBinding::infl
     }
 
 
-        binding.backArrowIBtn.setOnClickListener {
-            finish()
-        }
+
 
 
     private fun init(){
@@ -74,7 +71,9 @@ class ChatActivity : BaseActivity<ActivityChatBinding>(ActivityChatBinding::infl
             remainUser = remainUser.dropLast(1)
             binding.chatUserListTV.text = "${userNameList[0]}님이 ${remainUser}을 초대했습니다."
         }
-
+        binding.backArrowIBtn.setOnClickListener {
+            finish()
+        }
 
         binding.bottomMenuDI.setOnClickListener {
             startNextActivity(FirstCalculationActivity::class.java)
@@ -101,17 +100,12 @@ class ChatActivity : BaseActivity<ActivityChatBinding>(ActivityChatBinding::infl
 
 
         binding.voteCompleteBtn.setOnClickListener {
-            if (binding.voteCompleteBtn.isActivated) {
-                binding.voteCompleteBtn.isActivated = false
-            }
-            else {
-                    binding.voteCompleteBtn.isActivated = true
-            }
+            binding.voteCompleteBtn.isActivated = !binding.voteCompleteBtn.isActivated
         }
     }
 
         private fun openMenu() {
-            if (isOpen == false) {
+            if (!isOpen) {
                 binding.closeBottomMenuCL.visibility = View.GONE
                 binding.openBottomMenuCL.visibility = View.VISIBLE
                 isOpen = true
@@ -119,7 +113,7 @@ class ChatActivity : BaseActivity<ActivityChatBinding>(ActivityChatBinding::infl
         }
 
         private fun closeMenu() {
-            if (isOpen == true) {
+            if (isOpen) {
                 binding.openBottomMenuCL.visibility = View.GONE
                 binding.closeBottomMenuCL.visibility = View.VISIBLE
                 isOpen = false
