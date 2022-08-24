@@ -1,12 +1,12 @@
-package com.han.my_friend_kim_jung_san.data.remote.room
+package com.han.my_friend_kim_jung_san.data.remote.register
 
 
 import com.google.gson.annotations.SerializedName
-import com.han.my_friend_kim_jung_san.data.entity.Data
+import com.han.my_friend_kim_jung_san.data.entity.UserData
 
-data class ScheduleResponse(
+data class SearchUserResponse(
     @SerializedName("data")
-    val list: List<Data>?,
+    val userData: UserData?,
     @SerializedName("message")
     val message: String?,
     @SerializedName("statusCode")

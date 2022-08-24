@@ -11,7 +11,6 @@ class RoomMemberRVAdapter(private val userList: ArrayList<User>):RecyclerView.Ad
 
     //x 버튼 클릭시 초대된 유저에서 삭제
     interface UserRemoveClickListener{
-
         fun onRemoveUser(position: Int)
     }
     private lateinit var userItemClickListener: UserRemoveClickListener

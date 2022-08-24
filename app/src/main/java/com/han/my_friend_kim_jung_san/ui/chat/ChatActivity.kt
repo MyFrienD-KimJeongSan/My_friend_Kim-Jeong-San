@@ -10,21 +10,45 @@ import com.han.my_friend_kim_jung_san.ui.BaseActivity
 import com.han.my_friend_kim_jung_san.ui.home.HomeFragment
 
 class ChatActivity : BaseActivity<ActivityChatBinding>(ActivityChatBinding::inflate) {
-
     var isOpen : Boolean = false
     override fun initAfterBinding() {
+        init()
+
+        openOptionMenu()
+    }
+
+    private fun init(){
+        val name = this.intent.getStringExtra("name")
+        val startDate = this.intent.getStringExtra("startDate")
+        val roomId = this.intent.getIntExtra("roomId", 0)
+        val userIdList = this.intent.getStringArrayListExtra("userIdList")
+        val userNameList = this.intent.getStringArrayListExtra("userNameList")
         binding.menuOpenBtn.setOnClickListener {
             openMenu()
         }
         binding.menuCloseBtn.setOnClickListener {
             closeMenu()
         }
+        binding.roomTitle.text = name
+        //임시로 날짜 넣음
+        binding.chatStartTV.text = startDate
+        var remainUser = ""
+        userNameList?.let {
+            for(i in 1..userNameList.lastIndex){
+                remainUser += "${userNameList[i]}님,"
+            }
+            remainUser = remainUser.dropLast(1)
+            binding.chatUserListTV.text = "${userNameList[0]}님이 ${remainUser}을 초대했습니다."
+        }
 
-        openOptionMenu()
+
+        binding.bottomMenuN1.setOnClickListener {
+
+        }
     }
 
     private fun openMenu() {
-        if (isOpen == false) {
+        if (!isOpen) {
             binding.closeBottomMenuCL.visibility = View.GONE
             binding.openBottomMenuCL.visibility = View.VISIBLE
             isOpen = true
@@ -32,7 +56,7 @@ class ChatActivity : BaseActivity<ActivityChatBinding>(ActivityChatBinding::infl
     }
 
     private fun closeMenu() {
-        if  (isOpen == true) {
+        if  (isOpen) {
             binding.openBottomMenuCL.visibility = View.GONE
             binding.closeBottomMenuCL.visibility = View.VISIBLE
             isOpen = false
@@ -44,7 +68,7 @@ class ChatActivity : BaseActivity<ActivityChatBinding>(ActivityChatBinding::infl
         binding.optionBtn.setOnClickListener {
             var popupMenu = PopupMenu(applicationContext, it)
 
-            menuInflater?.inflate(R.menu.option_menu, popupMenu.menu)
+            menuInflater.inflate(R.menu.option_menu, popupMenu.menu)
             popupMenu.show()
             popupMenu.setOnMenuItemClickListener {
                 when(it.itemId) {

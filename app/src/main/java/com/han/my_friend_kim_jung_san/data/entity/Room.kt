@@ -8,7 +8,7 @@ data class Room(
     @SerializedName("color")
     val color: String,
     @SerializedName("group")
-    val group: List<Int>?,
+    val group: List<String>,
     @SerializedName("name")
     val name: String,
     @SerializedName("startDate")

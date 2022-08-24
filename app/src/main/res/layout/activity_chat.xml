@@ -18,12 +18,12 @@
             android:layout_height="24dp"
             android:layout_marginStart="16dp"
             android:background="@drawable/back_arrow"
-            app:layout_constraintBottom_toBottomOf="@+id/userInformation"
+            app:layout_constraintBottom_toBottomOf="@+id/roomTitle"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/userInformation" />
+            app:layout_constraintTop_toTopOf="@+id/roomTitle" />
 
         <TextView
-            android:id="@+id/userInformation"
+            android:id="@+id/roomTitle"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="16dp"
@@ -78,7 +78,7 @@
             />
 
         <TextView
-            android:id="@+id/meetUserInfoTextView1"
+            android:id="@+id/chatStartTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="2022년 7월 13일 수요일"
@@ -111,7 +111,7 @@
             />
 
         <TextView
-            android:id="@+id/meetUserInfoTextView2"
+            android:id="@+id/chatUserListTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="김민지님이 박서연님, 김유진님을 초대했습니다."
@@ -221,6 +221,7 @@
                 />
 
             <ImageButton
+                android:id="@+id/bottomMenuN1"
                 android:layout_width="53dp"
                 android:layout_height="77dp"
                 android:background="@drawable/btn_meet_bottom_menu3"
@@ -229,6 +230,7 @@
                 android:layout_marginStart="40dp"/>
 
             <ImageButton
+                android:id="@+id/bottomMenuPayment"
                 android:layout_width="53dp"
                 android:layout_height="77dp"
                 android:background="@drawable/btn_meet_bottom_menu4"

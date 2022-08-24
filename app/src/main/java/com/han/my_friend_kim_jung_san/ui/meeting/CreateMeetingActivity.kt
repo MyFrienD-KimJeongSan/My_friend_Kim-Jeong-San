@@ -3,18 +3,22 @@ package com.han.my_friend_kim_jung_san.ui.meeting
 import android.annotation.SuppressLint
 import android.app.TimePickerDialog
 import android.graphics.Color
+import android.util.Log
 import androidx.core.content.ContextCompat
 
 import androidx.core.view.isEmpty
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.han.my_friend_kim_jung_san.R
+import com.han.my_friend_kim_jung_san.data.entity.Login
 import com.han.my_friend_kim_jung_san.data.entity.Room
 import com.han.my_friend_kim_jung_san.data.entity.User
+import com.han.my_friend_kim_jung_san.data.remote.auth.AuthService
 import com.han.my_friend_kim_jung_san.data.remote.room.RoomService
 import com.han.my_friend_kim_jung_san.databinding.ActivityCreateMeetingBinding
 import com.han.my_friend_kim_jung_san.extensions.makeVisible
 import com.han.my_friend_kim_jung_san.ui.BaseActivity
 import com.han.my_friend_kim_jung_san.ui.meeting.invite.RoomMemberRVAdapter
+import com.kakao.sdk.user.UserApiClient
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -23,18 +27,30 @@ class CreateMeetingActivity: BaseActivity<ActivityCreateMeetingBinding>(Activity
     var stateColor: String? = null
     var users = ArrayList<User>()
     private var day: String? = null
+    var uid = ""
+
     @SuppressLint("SetTextI18n", "SimpleDateFormat")
     override fun initAfterBinding() {
+        UserApiClient.instance.me { user, error ->
+            if (error != null) {
+                Log.e("user", "사용자 정보 요청 실패", error)
+            }
+            else if (user != null) {
+                Log.i("user", "사용자 정보 요청 성공123" +
+                        "\n회원번호: ${user.id}" +
+                        "\n이메일: ${user.kakaoAccount?.email}" +
+                        "\n닉네임: ${user.kakaoAccount?.profile?.nickname}" +
+                        "\n프로필사진: ${user.kakaoAccount?.profile?.thumbnailImageUrl}")
+                uid = user.id.toString()
+            }
+        }
         binding.dayTV.text = this.intent.getStringExtra("day")
         day = binding.dayTV.text.toString().replace(".", "-")
+
         //임시 유저
-        users.add(User("김정산", null, 1))
-        users.add(User("정산김", null, 1))
-        users.add(User("산정김", null, 1))
-        users.add(User("김산정", null, 1))
-        users.add(User("동동동", null, 1))
-        users.add(User("만만만", null, 1))
-        users.add(User("지지지", null, 1))
+
+        users.add(User("김정산", "", "123"))
+        users.add(User("오정산", "", "456"))
 
         initRV()
         binding.backArrowIBtn.setOnClickListener {
@@ -190,7 +206,10 @@ class CreateMeetingActivity: BaseActivity<ActivityCreateMeetingBinding>(Activity
         }
         val title = binding.titleET.text.toString()
         val startTime = binding.timeTV.text.toString()
-        val room = Room(stateColor!!, listOf(123,234,345,456),title, day!!,startTime)
+
+        val uidList = arrayListOf<String>()
+        uidList.add(uid)
+        val room = Room(stateColor!!, uidList ,title, day!!,startTime)
 
         RoomService.createRoom(this, room)
     }

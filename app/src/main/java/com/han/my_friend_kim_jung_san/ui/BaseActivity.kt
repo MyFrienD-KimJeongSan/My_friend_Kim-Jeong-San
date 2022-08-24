@@ -2,6 +2,7 @@ package com.han.my_friend_kim_jung_san.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.animation.AnimationUtils
@@ -10,6 +11,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
 import com.han.my_friend_kim_jung_san.R
+import com.kakao.sdk.user.UserApiClient
 
 abstract class BaseActivity<T: ViewBinding>(private val inflate: (LayoutInflater) -> T): AppCompatActivity(){
     protected lateinit var binding: T
