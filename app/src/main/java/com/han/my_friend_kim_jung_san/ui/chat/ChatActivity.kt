@@ -14,6 +14,7 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.han.my_friend_kim_jung_san.R
+import com.han.my_friend_kim_jung_san.data.local.MenuData
 import com.han.my_friend_kim_jung_san.databinding.ActivityChatBinding
 import com.han.my_friend_kim_jung_san.ui.BaseActivity
 import com.han.my_friend_kim_jung_san.ui.calculation.FirstCalculationActivity
@@ -21,6 +22,7 @@ import com.han.my_friend_kim_jung_san.ui.calculation.SecondCalculationActivity
 import com.han.my_friend_kim_jung_san.ui.home.HomeFragment
 import com.han.my_friend_kim_jung_san.ui.main.MainActivity
 import com.han.my_friend_kim_jung_san.ui.meeting.MeetingRoomFragment
+import java.util.*
 
 class ChatActivity : BaseActivity<ActivityChatBinding>(ActivityChatBinding::inflate) {
 
@@ -54,6 +56,14 @@ class ChatActivity : BaseActivity<ActivityChatBinding>(ActivityChatBinding::infl
             CallCamera()
         }
         openOptionMenu()
+
+        val list = ArrayList<MenuData>()
+        list.add(MenuData("소주", "5,000", "1", "5,000", "2"))
+        list.add(MenuData("삼겹살", "12,500", "3", "37,500", "2"))
+        list.add(MenuData("짬뽕탕", "15,000", "1", "15,000", "2"))
+
+        val adapter = VoteMenuRVAdapter(list)
+        binding.menuList.adapter = adapter
     }
 
     private fun openMenu() {

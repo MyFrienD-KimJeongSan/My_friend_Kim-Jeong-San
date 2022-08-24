@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="130dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/meetingItemCardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="25dp"
+        android:layout_marginBottom="10dp"
+        app:cardCornerRadius="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="10dp"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/opTitleTV"
+                android:textStyle="bold"
+                android:includeFontPadding="false"
+                android:fontFamily="@font/notosans_kr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14.14dp"
+                android:layout_marginTop="16dp"
+                android:letterSpacing="0.06"
+                android:lineSpacingExtra="3sp"
+                android:text="07.13 1차 정산"
+                android:textColor="#222B45"
+                android:textSize="16sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                />
+
+            <ImageView
+                android:layout_width="114.11dp"
+                android:layout_height="13dp"
+                android:layout_marginStart="8dp"
+                android:alpha="0.12"
+                android:background="#6F97FF"
+                app:layout_constraintBottom_toBottomOf="@+id/opTitleTV"
+                app:layout_constraintStart_toStartOf="@+id/opTitleTV" />
+
+            <ImageButton
+                android:id="@+id/searchBtn"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/search"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/costTitleTV"
+                android:textStyle="normal"
+                android:fontFamily="@font/notosans_kr_medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:text="결제 금액 : "
+                android:textColor="#8f9bb3"
+                android:layout_marginStart="5dp"
+                android:includeFontPadding="false"
+                android:layout_marginTop="9dp"
+                android:letterSpacing="0.06"
+                android:lineSpacingExtra="3sp"
+                app:layout_constraintStart_toStartOf="@id/opTitleTV"
+                app:layout_constraintTop_toBottomOf="@id/opTitleTV"
+                />
+
+            <TextView
+                android:id="@+id/costTV"
+                android:textStyle="normal"
+                android:fontFamily="@font/notosans_kr_medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:text="59,000"
+                android:textColor="#8f9bb3"
+                android:includeFontPadding="false"
+                android:letterSpacing="0.06"
+                android:lineSpacingExtra="3sp"
+                app:layout_constraintStart_toEndOf="@id/costTitleTV"
+                app:layout_constraintBottom_toBottomOf="@id/costTitleTV"
+                />
+
+            <TextView
+                android:textStyle="normal"
+                android:fontFamily="@font/notosans_kr_medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:text="원"
+                android:textColor="#8f9bb3"
+                android:includeFontPadding="false"
+                android:letterSpacing="0.06"
+                android:lineSpacingExtra="3sp"
+                app:layout_constraintStart_toEndOf="@id/costTV"
+                app:layout_constraintBottom_toBottomOf="@id/costTitleTV"
+                />
+
+            <TextView
+                android:id="@+id/payerTitleTV"
+                android:textStyle="normal"
+                android:fontFamily="@font/notosans_kr_medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:text="결제자 : "
+                android:textColor="#8f9bb3"
+                android:includeFontPadding="false"
+                app:layout_constraintStart_toStartOf="@id/costTitleTV"
+                app:layout_constraintTop_toBottomOf="@id/costTitleTV"
+                android:layout_marginTop="7dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginBottom="16dp"
+                android:letterSpacing="0.06"
+                android:lineSpacingExtra="3sp"
+                />
+
+            <TextView
+                android:id="@+id/payerTV"
+                android:textStyle="normal"
+                android:fontFamily="@font/notosans_kr_medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                android:text="김민지"
+                android:textColor="#8f9bb3"
+                android:includeFontPadding="false"
+                android:letterSpacing="0.06"
+                android:lineSpacingExtra="3sp"
+                app:layout_constraintStart_toEndOf="@id/payerTitleTV"
+                app:layout_constraintBottom_toBottomOf="@id/payerTitleTV"
+                />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
