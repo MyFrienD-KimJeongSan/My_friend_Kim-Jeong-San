@@ -21,7 +21,9 @@ import com.han.my_friend_kim_jung_san.data.local.MenuData
 import com.han.my_friend_kim_jung_san.databinding.ActivityChatBinding
 import com.han.my_friend_kim_jung_san.databinding.VoteMenuItemBinding
 import com.han.my_friend_kim_jung_san.ui.BaseActivity
+import com.han.my_friend_kim_jung_san.ui.calculation.CreateMeetFirstCalcActivity
 import com.han.my_friend_kim_jung_san.ui.calculation.FirstCalculationActivity
+import com.han.my_friend_kim_jung_san.ui.calculation.MeetSecondCalcActivity
 import com.han.my_friend_kim_jung_san.ui.calculation.SecondCalculationActivity
 import com.han.my_friend_kim_jung_san.ui.home.HomeFragment
 import com.han.my_friend_kim_jung_san.ui.main.MainActivity
@@ -46,6 +48,7 @@ class ChatActivity : BaseActivity<ActivityChatBinding>(ActivityChatBinding::infl
 
 
 
+    @SuppressLint("SetTextI18n")
     private fun init(){
         val name = this.intent.getStringExtra("name")
         val startDate = this.intent.getStringExtra("startDate")
@@ -75,12 +78,17 @@ class ChatActivity : BaseActivity<ActivityChatBinding>(ActivityChatBinding::infl
             finish()
         }
 
-        binding.bottomMenuDI.setOnClickListener {
-            startNextActivity(FirstCalculationActivity::class.java)
+        binding.bottomMenuN1.setOnClickListener {
+            startNextActivity(CreateMeetFirstCalcActivity::class.java)
         }
 
         binding.bottomMenuDI.setOnClickListener {
-            startNextActivity(SecondCalculationActivity::class.java)
+            val intent = Intent(this, MeetSecondCalcActivity::class.java)
+            intent.putExtra("roomId", roomId)
+            intent.putExtra("startDate", startDate)
+            intent.putExtra("userIdList", userIdList)
+            intent.putExtra("userNameList", userNameList)
+            startActivity(intent)
         }
 
         binding.bottomMenuCamera.setOnClickListener {

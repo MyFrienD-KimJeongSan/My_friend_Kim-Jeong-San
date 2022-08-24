@@ -305,9 +305,7 @@
                 android:layout_marginStart="40dp"/>
 
             <ImageButton
-
                 android:id="@+id/bottomMenuDI"
-
                 android:layout_width="53dp"
                 android:layout_height="77dp"
                 android:background="@drawable/btn_meet_bottom_menu4"

@@ -3,8 +3,10 @@ package com.han.my_friend_kim_jung_san
 import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
+import android.util.Log
 import com.han.my_friend_kim_jung_san.config.XAccessTokenInterceptor
 import com.kakao.sdk.common.KakaoSdk
+import com.kakao.sdk.common.util.Utility
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -27,7 +29,9 @@ class ApplicationClass: Application() {
 
     override fun onCreate() {
         super.onCreate()
-        KakaoSdk.init(this, BuildConfig.KAKAO_API_KEY)
+        val hashKey = Utility.getKeyHash(this)
+        Log.i("hash", hashKey)
+        KakaoSdk.init(this, "309260c823ae60a87126b7c79902f5ab")
         val client: OkHttpClient = OkHttpClient.Builder()
             .readTimeout(30000, TimeUnit.MILLISECONDS)
             .connectTimeout(30000, TimeUnit.MILLISECONDS)

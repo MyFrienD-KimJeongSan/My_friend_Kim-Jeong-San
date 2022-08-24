@@ -158,7 +158,7 @@ class HomeFragment : CalendarFragment(R.layout.fragment_home), SearchView, AllSe
             binding.monthTV.text = monthTitleFormatter.format(month.yearMonth)
 
         }
-        allSearch()
+        //allSearch()
         Log.i("event", "$event 1")
         class DayViewContainer(view: View) : ViewContainer(view) {
             lateinit var day: CalendarDay

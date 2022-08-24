@@ -135,8 +135,6 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
                             AuthService.login(this, Login(user.kakaoAccount?.email,user.kakaoAccount?.profile?.nickname,"", user.id.toString()))
                         }
                     }
-                    showToast("카카오톡으로 로그인 성공")
-
                 }
             }
         } else {

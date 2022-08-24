@@ -49,8 +49,8 @@ class CreateMeetingActivity: BaseActivity<ActivityCreateMeetingBinding>(Activity
 
         //임시 유저
 
-        users.add(User("김정산", "", "123"))
-        users.add(User("오정산", "", "456"))
+        users.add(User("한관진", "", "123"))
+        users.add(User("이수민", "", "456"))
 
         initRV()
         binding.backArrowIBtn.setOnClickListener {
@@ -209,6 +209,7 @@ class CreateMeetingActivity: BaseActivity<ActivityCreateMeetingBinding>(Activity
 
         val uidList = arrayListOf<String>()
         uidList.add(uid)
+        uidList.add("2401538697")
         val room = Room(stateColor!!, uidList ,title, day!!,startTime)
 
         RoomService.createRoom(this, room)
