@@ -72,9 +72,36 @@
         <entry key="..\:/Users/HanKwanJin/AndroidStudioProjects/My_friend_Kim-Jeong-San/app/src/main/res/layout/notice_item.xml" value="0.5" />
         <entry key="..\:/Users/HanKwanJin/AndroidStudioProjects/My_friend_Kim-Jeong-San/app/src/main/res/menu/bottom_app_bar_menu.xml" value="0.3234375" />
         <entry key="..\:/Users/HanKwanJin/AndroidStudioProjects/My_friend_Kim-Jeong-San/app/src/main/res/menu/bottom_nav_menu.xml" value="0.12037037037037036" />
+
+
+        <entry key="app/src/main/res/drawable/meetingroom_rectangle.xml" value="0.1595" />
+        <entry key="app/src/main/res/drawable/rectangle.xml" value="0.1595" />
+        <entry key="app/src/main/res/layout/activity_first_calculation.xml" value="0.21932830810546872" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.2953125" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.2953125" />
+        <entry key="app/src/main/res/layout/activity_meetingroom.xml" value="0.20822753906250002" />
+        <entry key="app/src/main/res/layout/activity_my_page.xml" value="0.2953125" />
+        <entry key="app/src/main/res/layout/activity_notice.xml" value="0.2953125" />
+        <entry key="app/src/main/res/layout/activity_second_calculation.xml" value="0.2953125" />
+        <entry key="app/src/main/res/layout/activity_sign_up.xml" value="0.2953125" />
+        <entry key="app/src/main/res/layout/fragment_account.xml" value="0.2953125" />
+        <entry key="app/src/main/res/layout/fragment_close_menu.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.2953125" />
+        <entry key="app/src/main/res/layout/fragment_meet_open_menu.xml" value="0.30585072835286453" />
+        <entry key="app/src/main/res/layout/fragment_meet_open_plus.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/layout/fragment_meetingroom.xml" value="0.2953125" />
+        <entry key="app/src/main/res/layout/fragment_meetingroom_list.xml" value="0.2521970383664396" />
+        <entry key="app/src/main/res/layout/fragment_operations.xml" value="0.2953125" />
+        <entry key="app/src/main/res/layout/meeting_item.xml" value="0.2953125" />
+        <entry key="app/src/main/res/layout/meetingroom_menu.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/layout/notice_item.xml" value="0.2953125" />
+        <entry key="app/src/main/res/menu/bottom_nav_menu.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/menu/option_menu.xml" value="0.3098958333333333" />
+
         <entry key="..\:/Users/HanKwanJin/AndroidStudioProjects/My_friend_Kim-Jeong-San/app/src/main/res/menu/option_menu.xml" value="0.27276613937580163" />
         <entry key="..\:/Users/HanKwanJin/AndroidStudioProjects/My_friend_Kim-Jeong-San/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.3575" />
         <entry key="..\:/Users/HanKwanJin/AndroidStudioProjects/My_friend_Kim-Jeong-San/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.3575" />
+
       </map>
     </option>
   </component>

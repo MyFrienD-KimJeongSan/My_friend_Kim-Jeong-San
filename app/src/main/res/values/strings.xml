@@ -36,4 +36,10 @@
     <string name="invite_member">참가자 초대</string>
     <string name="check">확인</string>
     <string name="recent_invite">최근에 초대</string>
+    <string name="menu_name">소주</string>
+    <string name="menu_price">5,000</string>
+    <string name="menu_quantity">1</string>
+    <string name="menu_total_price">5,000</string>
+    <string name="menu_people_count">2</string>
+    <string name="today_date">2022.07.13</string>
 </resources>

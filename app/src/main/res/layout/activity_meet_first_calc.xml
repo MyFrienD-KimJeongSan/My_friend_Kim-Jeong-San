@@ -1,0 +1,505 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/n_1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.calculation.FirstCalculationActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/topLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/backArrowIBtn"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="16dp"
+            android:background="@drawable/back_arrow"
+            app:layout_constraintBottom_toBottomOf="@+id/firstCalculationTextView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/firstCalculationTextView" />
+
+        <TextView
+            android:id="@+id/firstCalculationTextView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/notosans_kr"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:text="@string/_1_n"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.25dp"
+        android:background="#757575"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topLayout" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/secondLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/thirdLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/topLayout">
+
+        <TextView
+            android:id="@+id/costTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:fontFamily="@font/notosans_kr"
+            android:includeFontPadding="false"
+            android:text="결제 금액 "
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/firstCardView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/firstCardView" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/notosans_kr"
+            android:includeFontPadding="false"
+            android:text="*"
+            android:textColor="#b3261e"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/costTextView"
+            app:layout_constraintStart_toEndOf="@+id/costTextView"
+            app:layout_constraintTop_toTopOf="@+id/costTextView" />
+
+        <TextView
+            android:id="@+id/memberTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:fontFamily="@font/notosans_kr"
+            android:includeFontPadding="false"
+            android:text="인원 "
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/secondCardView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/secondCardView" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/notosans_kr"
+            android:includeFontPadding="false"
+            android:text="*"
+            android:textColor="#b3261e"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/memberTextView"
+            app:layout_constraintStart_toEndOf="@+id/memberTextView"
+            app:layout_constraintTop_toTopOf="@+id/memberTextView" />
+
+
+        <TextView
+            android:id="@+id/resultTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:fontFamily="@font/notosans_kr"
+            android:includeFontPadding="false"
+            android:text="정산 금액 "
+            android:textColor="@color/sky_blue"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/thirdCardView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/thirdCardView" />
+
+        <!-- first -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/firstCardView"
+            android:layout_width="268dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="1dp"
+            app:layout_constraintBottom_toTopOf="@+id/secondCardView"
+            app:layout_constraintStart_toEndOf="@+id/costTextView"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/costInputTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginEnd="30dp"
+                    android:fontFamily="@font/notosans_kr"
+                    android:gravity="center|right"
+                    android:includeFontPadding="false"
+                    android:textColor="#8F9BB3"
+                    android:textSize="17sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/wonTextView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/wonTextView" />
+
+                <TextView
+                    android:id="@+id/wonTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="11dp"
+                    android:fontFamily="@font/notosans_kr"
+                    android:includeFontPadding="false"
+                    android:text="원"
+                    android:textColor="@color/sky_blue"
+                    android:textSize="17sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- second -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/secondCardView"
+            android:layout_width="268dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="1dp"
+            app:layout_constraintBottom_toTopOf="@+id/thirdCardView"
+            app:layout_constraintStart_toStartOf="@+id/firstCardView"
+            app:layout_constraintTop_toBottomOf="@+id/firstCardView">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/memberInputTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginEnd="30dp"
+                    android:fontFamily="@font/notosans_kr"
+                    android:gravity="center|right"
+                    android:includeFontPadding="false"
+                    android:textColor="#8F9BB3"
+                    android:textSize="17sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/countTextView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/countTextView" />
+
+                <TextView
+                    android:id="@+id/countTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="11dp"
+                    android:fontFamily="@font/notosans_kr"
+                    android:includeFontPadding="false"
+                    android:text="명"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <!-- third -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/thirdCardView"
+            android:layout_width="268dp"
+            android:layout_height="50dp"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="1dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/firstCardView"
+            app:layout_constraintTop_toBottomOf="@+id/secondCardView">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:id="@+id/resultInputTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginEnd="30dp"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="@font/notosans_kr"
+                    android:gravity="center|right"
+                    android:includeFontPadding="false"
+                    android:textColor="#8F9BB3"
+                    android:textSize="17sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/resultWonTextView"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/resultWonTextView" />
+
+                <TextView
+                    android:id="@+id/resultWonTextView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="11dp"
+                    android:fontFamily="@font/notosans_kr"
+                    android:includeFontPadding="false"
+                    android:text="원"
+                    android:textColor="@color/black"
+                    android:textSize="17sp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/thirdLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/finalLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/secondLayout">
+
+        <ImageButton
+            android:id="@+id/acButton"
+            android:layout_width="66dp"
+            android:layout_height="66dp"
+            android:background="@drawable/clicked_button_ac"
+            android:onClick="buttonClicked"
+            app:layout_constraintBottom_toTopOf="@+id/sevenButton"
+            app:layout_constraintEnd_toStartOf="@+id/plusMinusButton"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ImageButton
+            android:id="@+id/plusMinusButton"
+            android:layout_width="66dp"
+            android:layout_height="66dp"
+            android:background="@drawable/clicked_button_plus_minus"
+            android:onClick="buttonClicked"
+            app:layout_constraintBottom_toBottomOf="@+id/acButton"
+            app:layout_constraintEnd_toStartOf="@+id/modButton"
+            app:layout_constraintStart_toEndOf="@+id/acButton"
+            app:layout_constraintTop_toTopOf="@+id/acButton" />
+
+        <ImageButton
+            android:id="@+id/modButton"
+            android:layout_width="71dp"
+            android:layout_height="65dp"
+            android:background="@drawable/clicked_button_mod"
+            app:layout_constraintBottom_toBottomOf="@id/plusMinusButton"
+            app:layout_constraintEnd_toStartOf="@+id/divideButton"
+            app:layout_constraintStart_toEndOf="@+id/plusMinusButton"
+            app:layout_constraintTop_toTopOf="@+id/plusMinusButton" />
+
+        <ImageButton
+            android:id="@+id/divideButton"
+            android:layout_width="66dp"
+            android:layout_height="66dp"
+            android:background="@drawable/divide"
+            android:onClick="buttonClicked"
+            app:layout_constraintBottom_toBottomOf="@id/modButton"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/modButton"
+            app:layout_constraintTop_toTopOf="@+id/modButton" />
+
+        <ImageButton
+            android:id="@+id/sevenButton"
+            android:layout_width="66dp"
+            android:layout_height="66dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/clicked_button7"
+            android:onClick="buttonClicked"
+            app:layout_constraintBottom_toTopOf="@+id/fourButton"
+            app:layout_constraintStart_toStartOf="@+id/acButton"
+            app:layout_constraintTop_toBottomOf="@+id/acButton" />
+
+        <ImageButton
+            android:id="@+id/eightButton"
+            android:layout_width="66dp"
+            android:layout_height="66dp"
+            android:background="@drawable/clicked_button8"
+            android:onClick="buttonClicked"
+            app:layout_constraintBottom_toBottomOf="@+id/sevenButton"
+            app:layout_constraintStart_toStartOf="@+id/plusMinusButton"
+            app:layout_constraintTop_toTopOf="@+id/sevenButton" />
+
+        <ImageButton
+            android:id="@+id/nineButton"
+            android:layout_width="66dp"
+            android:layout_height="66dp"
+            android:background="@drawable/clicked_button9"
+            android:onClick="buttonClicked"
+            app:layout_constraintBottom_toBottomOf="@+id/eightButton"
+            app:layout_constraintStart_toStartOf="@id/modButton"
+            app:layout_constraintTop_toTopOf="@+id/eightButton" />
+
+        <ImageButton
+            android:id="@+id/multiButton"
+            android:layout_width="66dp"
+            android:layout_height="66dp"
+            android:background="@drawable/multi"
+            android:onClick="buttonClicked"
+            app:layout_constraintStart_toStartOf="@+id/divideButton"
+            app:layout_constraintTop_toTopOf="@+id/nineButton" />
+
+        <ImageButton
+            android:id="@+id/fourButton"
+            android:layout_width="66dp"
+            android:layout_height="66dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/clicked_button4"
+            android:onClick="buttonClicked"
+            app:layout_constraintBottom_toTopOf="@+id/oneButton"
+            app:layout_constraintStart_toStartOf="@+id/sevenButton"
+            app:layout_constraintTop_toBottomOf="@+id/sevenButton" />
+
+        <ImageButton
+            android:id="@+id/fiveButton"
+            android:layout_width="66dp"
+            android:layout_height="66dp"
+            android:background="@drawable/clicked_button5"
+            android:onClick="buttonClicked"
+            app:layout_constraintStart_toStartOf="@+id/eightButton"
+            app:layout_constraintTop_toTopOf="@+id/fourButton" />
+
+        <ImageButton
+            android:id="@+id/sixButton"
+            android:layout_width="66dp"
+            android:layout_height="66dp"
+            android:background="@drawable/clicked_button6"
+            android:onClick="buttonClicked"
+            app:layout_constraintStart_toStartOf="@+id/nineButton"
+            app:layout_constraintTop_toTopOf="@+id/fiveButton" />
+
+        <ImageButton
+            android:id="@+id/minusButton"
+            android:layout_width="66dp"
+            android:layout_height="66dp"
+            android:background="@drawable/minus"
+            android:onClick="buttonClicked"
+            app:layout_constraintStart_toStartOf="@+id/multiButton"
+            app:layout_constraintTop_toTopOf="@+id/sixButton" />
+
+        <ImageButton
+            android:id="@+id/oneButton"
+            android:layout_width="66dp"
+            android:layout_height="66dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/clicked_button1"
+            android:onClick="buttonClicked"
+            app:layout_constraintBottom_toTopOf="@+id/zeroButton"
+            app:layout_constraintStart_toStartOf="@+id/fourButton"
+            app:layout_constraintTop_toBottomOf="@+id/fourButton" />
+
+        <ImageButton
+            android:id="@+id/twoButton"
+            android:layout_width="66dp"
+            android:layout_height="66dp"
+            android:background="@drawable/clicked_button2"
+            android:onClick="buttonClicked"
+            app:layout_constraintStart_toStartOf="@+id/fiveButton"
+            app:layout_constraintTop_toTopOf="@+id/oneButton" />
+
+        <ImageButton
+            android:id="@+id/threeButton"
+            android:layout_width="66dp"
+            android:layout_height="66dp"
+            android:background="@drawable/clicked_button3"
+            android:onClick="buttonClicked"
+            app:layout_constraintStart_toStartOf="@+id/sixButton"
+            app:layout_constraintTop_toTopOf="@+id/twoButton" />
+
+        <ImageButton
+            android:id="@+id/plusButton"
+            android:layout_width="66dp"
+            android:layout_height="66dp"
+            android:background="@drawable/plus"
+            android:onClick="buttonClicked"
+            app:layout_constraintStart_toStartOf="@+id/minusButton"
+            app:layout_constraintTop_toTopOf="@+id/threeButton" />
+
+        <ImageButton
+            android:id="@+id/zeroButton"
+            android:layout_width="154dp"
+            android:layout_height="66dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/clicked_button0"
+            android:onClick="buttonClicked"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/oneButton"
+            app:layout_constraintTop_toBottomOf="@+id/oneButton" />
+
+        <ImageButton
+            android:id="@+id/dotButton"
+            android:layout_width="66dp"
+            android:layout_height="66dp"
+            android:background="@drawable/clicked_button_dot"
+            android:onClick="buttonClicked"
+            app:layout_constraintStart_toStartOf="@+id/threeButton"
+            app:layout_constraintTop_toTopOf="@+id/zeroButton" />
+
+        <ImageButton
+            android:id="@+id/equalButton"
+            android:layout_width="66dp"
+            android:layout_height="66dp"
+            android:background="@drawable/equal"
+            android:onClick="buttonClicked"
+            app:layout_constraintStart_toStartOf="@+id/plusButton"
+            app:layout_constraintTop_toTopOf="@+id/dotButton" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/finalLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bottom_layout"
+        android:elevation="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <ImageButton
+            android:id="@+id/finishIBtn"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@drawable/finish"
+            android:layout_marginHorizontal="25dp"
+            android:layout_marginVertical="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

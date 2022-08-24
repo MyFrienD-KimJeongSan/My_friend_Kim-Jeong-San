@@ -17,8 +17,11 @@ import com.han.my_friend_kim_jung_san.databinding.FragmentMeetingRoomBinding
 import com.han.my_friend_kim_jung_san.databinding.MeetingItemBinding
 import com.han.my_friend_kim_jung_san.ui.BaseFragment
 import com.han.my_friend_kim_jung_san.ui.chat.ChatActivity
+import com.han.my_friend_kim_jung_san.ui.mypage.MyPageActivity
+import com.han.my_friend_kim_jung_san.ui.notice.NoticeActivity
 import com.han.my_friend_kim_jung_san.ui.home.AllSearchView
 import com.kakao.sdk.user.UserApiClient
+
 
 class MeetingRoomRVAdapter(val onClick: (Data) -> Unit): RecyclerView.Adapter<MeetingRoomRVAdapter.ViewHolder>() {
     val meetingList = mutableListOf<Data>()
@@ -61,6 +64,7 @@ class MeetingRoomRVAdapter(val onClick: (Data) -> Unit): RecyclerView.Adapter<Me
         }
     }
     override fun getItemCount(): Int = meetingList.size
+
 
 
 }

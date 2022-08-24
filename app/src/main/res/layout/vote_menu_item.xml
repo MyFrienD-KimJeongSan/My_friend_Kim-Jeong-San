@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/grayLine"
+    android:orientation="horizontal"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <CheckBox
+        android:id="@+id/voteBtn1"
+        android:layout_width="0dp"
+        android:layout_height="24dp"
+        android:button="@drawable/check_radio_button"
+        android:background="#ffffff"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:scaleX="0.75"
+        android:scaleY="0.75"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="3"
+        android:layout_marginStart="6dp"
+        />
+
+    <TextView
+        android:id="@+id/menuNameTV"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/menu_name"
+        android:textSize="14sp"
+        android:textColor="#222B45"
+        android:fontFamily="@font/notosans_kr"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="6"
+        android:layout_marginStart="12dp"
+        />
+
+    <TextView
+        android:id="@+id/menuPriceTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/menu_price"
+        android:textSize="14sp"
+        android:textColor="#222B45"
+        android:fontFamily="@font/notosans_kr"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="4"
+        android:layout_marginStart="30dp"
+        />
+
+    <TextView
+        android:id="@+id/menuQuanTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/menu_quantity"
+        android:textSize="14sp"
+        android:textColor="#222B45"
+        android:fontFamily="@font/notosans_kr"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="4"
+        />
+
+    <TextView
+        android:id="@+id/menuTotalPriceTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/menu_total_price"
+        android:textSize="14sp"
+        android:textColor="#222B45"
+        android:fontFamily="@font/notosans_kr"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="4"
+        />
+
+    <ImageView
+        android:id="@+id/userIV"
+        android:layout_width="13dp"
+        android:layout_height="13dp"
+        android:background="@drawable/ic_user_vote"
+        android:layout_gravity="center_vertical"
+        />
+
+    <TextView
+        android:id="@+id/menuPeopleTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/menu_people_count"
+        android:textSize="12sp"
+        android:textColor="#8F9BB3"
+        android:layout_marginStart="6dp"
+        android:fontFamily="@font/notosans_kr"
+        android:layout_gravity="center_vertical"
+        android:layout_marginEnd="16dp"
+        />
+
+</LinearLayout>
