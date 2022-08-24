@@ -23,10 +23,8 @@
             android:name=".ui.meeting.invite.InviteActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.chat.ChatActivity"
-            android:exported="false" />
-        <activity
             android:name=".ui.meeting.CreateMeetingActivity"
+            android:windowSoftInputMode="adjustPan"
             android:exported="false" />
         <activity
             android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"

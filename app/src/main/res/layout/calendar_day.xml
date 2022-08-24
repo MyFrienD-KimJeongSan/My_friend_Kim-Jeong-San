@@ -10,13 +10,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:textStyle="bold"
-        android:fontFamily="@font/sans_kr"
-        android:includeFontPadding="false"
         android:layout_margin="8dp"
+        android:fontFamily="@font/sans_kr"
         android:gravity="center"
+        android:includeFontPadding="false"
         android:textColor="@color/black"
         android:textSize="15sp"
+        android:textStyle="bold"
         tools:text="22" />
 
     <LinearLayout
@@ -27,34 +27,71 @@
         android:orientation="horizontal">
 
         <View
-            android:id="@+id/blueDot"
+            android:id="@+id/red"
             android:layout_width="4.5dp"
             android:layout_height="4.5dp"
             android:layout_gravity="center_horizontal"
+            android:layout_marginEnd="2dp"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/state_blue"
+            android:background="@drawable/red"
             android:visibility="gone"
             tools:visibility="visible" />
 
         <View
-            android:id="@+id/greenDot"
+            android:id="@+id/orange"
             android:layout_width="4.5dp"
             android:layout_height="4.5dp"
             android:layout_gravity="center_horizontal"
+            android:layout_marginEnd="2dp"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/state_green"
+            android:background="@drawable/orange"
             android:visibility="gone"
             tools:visibility="visible" />
 
         <View
-            android:id="@+id/skyBlueDot"
+            android:id="@+id/yellow"
             android:layout_width="4.5dp"
             android:layout_height="4.5dp"
             android:layout_gravity="center_horizontal"
+            android:layout_marginEnd="2dp"
             android:layout_marginBottom="10dp"
-            android:background="@drawable/state_skyblue"
+            android:background="@drawable/yellow"
             android:visibility="gone"
             tools:visibility="visible" />
+
+        <View
+            android:id="@+id/green"
+            android:layout_width="4.5dp"
+            android:layout_height="4.5dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginEnd="2dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/green"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+        <View
+            android:id="@+id/blue"
+            android:layout_width="4.5dp"
+            android:layout_height="4.5dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginEnd="2dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/blue"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+        <View
+            android:id="@+id/purple"
+            android:layout_width="4.5dp"
+            android:layout_height="4.5dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginEnd="2dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/purple"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
     </LinearLayout>
 
 </FrameLayout>

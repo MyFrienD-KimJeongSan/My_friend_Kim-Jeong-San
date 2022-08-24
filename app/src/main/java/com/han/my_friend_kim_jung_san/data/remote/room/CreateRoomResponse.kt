@@ -1,9 +1,9 @@
-package com.han.my_friend_kim_jung_san.data.remote.auth
+package com.han.my_friend_kim_jung_san.data.remote.room
 
 
 import com.google.gson.annotations.SerializedName
 
-data class AuthResponse(
+data class CreateRoomResponse(
     @SerializedName("message")
     val message: String?,
     @SerializedName("statusCode")

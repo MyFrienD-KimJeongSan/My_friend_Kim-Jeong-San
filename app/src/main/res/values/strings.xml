@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">My_friend_Kim-Jung-San</string>
+    <string name="app_name">내 친구 김정산</string>
     <string name="home_menu">홈</string>
     <string name="math_operations_menu">바로정산</string>
     <string name="calendar_blank_menu">계좌번호부</string>

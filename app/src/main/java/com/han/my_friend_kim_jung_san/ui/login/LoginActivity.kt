@@ -1,64 +1,56 @@
 package com.han.my_friend_kim_jung_san.ui.login
 
-import android.content.Intent
+
 import android.util.Log
 import android.view.animation.AnimationUtils
-import com.han.my_friend_kim_jung_san.ApplicationClass.Companion.TAG
 import com.han.my_friend_kim_jung_san.R
+import com.han.my_friend_kim_jung_san.data.entity.Login
+import com.han.my_friend_kim_jung_san.data.remote.auth.AuthService
 import com.han.my_friend_kim_jung_san.databinding.ActivityLoginBinding
 import com.han.my_friend_kim_jung_san.ui.BaseActivity
 import com.han.my_friend_kim_jung_san.ui.main.MainActivity
+import com.han.my_friend_kim_jung_san.ui.signup.SignUpActivity
 import com.kakao.sdk.auth.model.OAuthToken
 import com.kakao.sdk.common.model.AuthErrorCause
 import com.kakao.sdk.common.model.ClientError
 import com.kakao.sdk.common.model.ClientErrorCause
-import com.kakao.sdk.common.util.Utility
+import com.kakao.sdk.talk.TalkApiClient
 import com.kakao.sdk.user.UserApiClient
 
 
-class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::inflate) {
+class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::inflate), LoginView {
+    var uid = ""
+    var name = ""
     override fun initAfterBinding() {
-        initAnim()
+
+        //initAnim()
         binding.kakaoLoginBtn.setOnClickListener {
             login()
+            TalkApiClient.instance.friends { friends, error ->
+                if (error != null) {
+                    Log.e("kakao", "카카오톡 친구 목록 가져오기 실패", error)
+                }
+                else if (friends != null) {
+                    Log.i("kakao", "카카오톡 친구 목록 가져오기 성공 \n${friends.elements?.joinToString("\n")}")
+
+                    // 친구의 UUID 로 메시지 보내기 가능
+                }
+            }
         }
         binding.mainPhotoIV.setOnClickListener {
             startActivityWithClear(MainActivity::class.java)
         }
 
     }
-    private fun initAnim(){
-        val titleAnim = AnimationUtils.loadAnimation(this, R.anim.title_anim)
-        val subAnim = AnimationUtils.loadAnimation(this, R.anim.sub_title_anim)
-        val lineAnim = AnimationUtils.loadAnimation(this, R.anim.line_anim)
-        binding.splashTitleTV.startAnimation(titleAnim)
-        binding.splashSubTV.startAnimation(subAnim)
-        binding.line.startAnimation(lineAnim)
-    }
+//    private fun initAnim(){
+//        val titleAnim = AnimationUtils.loadAnimation(this, R.anim.title_anim)
+//        val subAnim = AnimationUtils.loadAnimation(this, R.anim.sub_title_anim)
+//        val lineAnim = AnimationUtils.loadAnimation(this, R.anim.line_anim)
+//        binding.splashTitleTV.startAnimation(titleAnim)
+//        binding.splashSubTV.startAnimation(subAnim)
+//        binding.line.startAnimation(lineAnim)
+//    }
     private fun login(){
-        // 토큰 정보 보기
-        UserApiClient.instance.accessTokenInfo { tokenInfo, error ->
-            if (error != null) {
-                Log.e("token", "토큰 정보 보기 실패", error)
-            }
-            else if (tokenInfo != null) {
-                Log.i("token", "토큰 정보 보기 성공" +
-                        "\n회원번호: ${tokenInfo.id}" +
-                        "\n만료시간: ${tokenInfo.expiresIn} 초")
-            }
-        }
-        UserApiClient.instance.me { user, error ->
-            if (error != null) {
-                Log.e("user", "사용자 정보 요청 실패", error)
-            }
-            else if (user != null) {
-                Log.i("user", "사용자 정보 요청 성공" +
-                        "\n회원번호: ${user.id}" +
-                        "\n이메일: ${user.kakaoAccount?.email}" +
-                        "\n닉네임: ${user.kakaoAccount?.profile?.nickname}" +
-                        "\n프로필사진: ${user.kakaoAccount?.profile?.thumbnailImageUrl}")
-            }
-        }
 
         val callback: (OAuthToken?, Throwable?) -> Unit = { token, error ->
             if (error != null) {
@@ -94,7 +86,25 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
             }
             else if (token != null) {
                 showToast("로그인에 성공하였습니다.")
-                startActivityWithClear(MainActivity::class.java)
+                Log.i("token", "access token ${token.accessToken}")
+                UserApiClient.instance.me { user, error ->
+                    if (error != null) {
+                        Log.e("user", "사용자 정보 요청 실패", error)
+                    }
+                    else if (user != null) {
+                        Log.i("user", "사용자 정보 요청 성공" +
+                                "\n회원번호: ${user.id}" +
+                                "\n이메일: ${user.kakaoAccount?.email}" +
+                                "\n닉네임: ${user.kakaoAccount?.profile?.nickname}" +
+                                "\n프로필사진: ${user.kakaoAccount?.profile?.thumbnailImageUrl}")
+
+                        name = user.kakaoAccount?.profile?.nickname.toString()
+                        uid = user.id.toString()
+                        AuthService.login(this, Login(user.kakaoAccount?.email,user.kakaoAccount?.profile?.nickname,"", user.id.toString()))
+                    }
+                }
+
+                //startActivityWithClear(MainActivity::class.java)
             }
         }
 
@@ -111,16 +121,78 @@ class LoginActivity : BaseActivity<ActivityLoginBinding>(ActivityLoginBinding::i
                     }
 
                     // 카카오톡에 연결된 카카오계정이 없는 경우, 카카오계정으로 로그인 시도
+                    UserApiClient.instance.me { user, error ->
+                        if (error != null) {
+                            Log.e("user", "사용자 정보 요청 실패", error)
+                        }
+                        else if (user != null) {
+                            Log.i("user", "사용자 정보 요청 성공" +
+                                    "\n회원번호: ${user.id}" +
+                                    "\n이메일: ${user.kakaoAccount?.email}" +
+                                    "\n닉네임: ${user.kakaoAccount?.profile?.nickname}" +
+                                    "\n프로필사진: ${user.kakaoAccount?.profile?.thumbnailImageUrl}")
+
+                            name = user.kakaoAccount?.profile?.nickname.toString()
+                            uid = user.id.toString()
+                            AuthService.login(this, Login(user.kakaoAccount?.email,user.kakaoAccount?.profile?.nickname,"", user.id.toString()))
+                        }
+                    }
                     UserApiClient.instance.loginWithKakaoAccount(this, callback = callback)
                 } else if (token != null) {
+                    UserApiClient.instance.me { user, error ->
+                        if (error != null) {
+                            Log.e("user", "사용자 정보 요청 실패", error)
+                        }
+                        else if (user != null) {
+                            Log.i("user", "사용자 정보 요청 성공" +
+                                    "\n회원번호: ${user.id}" +
+                                    "\n이메일: ${user.kakaoAccount?.email}" +
+                                    "\n닉네임: ${user.kakaoAccount?.profile?.nickname}" +
+                                    "\n프로필사진: ${user.kakaoAccount?.profile?.thumbnailImageUrl}")
+
+                            name = user.kakaoAccount?.profile?.nickname.toString()
+                            uid = user.id.toString()
+                            AuthService.login(this, Login(user.kakaoAccount?.email,user.kakaoAccount?.profile?.nickname,"", user.id.toString()))
+                        }
+                    }
                     showToast("카카오톡으로 로그인 성공")
-                    startActivityWithClear(MainActivity::class.java)
+
                 }
             }
         } else {
+            UserApiClient.instance.me { user, error ->
+                if (error != null) {
+                    Log.e("user", "사용자 정보 요청 실패", error)
+                }
+                else if (user != null) {
+                    Log.i("user", "사용자 정보 요청 성공" +
+                            "\n회원번호: ${user.id}" +
+                            "\n이메일: ${user.kakaoAccount?.email}" +
+                            "\n닉네임: ${user.kakaoAccount?.profile?.nickname}" +
+                            "\n프로필사진: ${user.kakaoAccount?.profile?.thumbnailImageUrl}")
+
+                    name = user.kakaoAccount?.profile?.nickname.toString()
+                    uid = user.id.toString()
+                    AuthService.login(this, Login(user.kakaoAccount?.email,user.kakaoAccount?.profile?.nickname,"", user.id.toString()))
+                }
+            }
             UserApiClient.instance.loginWithKakaoAccount(this, callback = callback)
         }
 
+    }
+
+    override fun onLoginSuccess() {
+        startActivityWithClear(MainActivity::class.java)
+    }
+
+    override fun onRegisterSuccess() {
+        val m = mutableMapOf<String, String>()
+        m["uid"] = uid
+        m["name"] = name
+        startActivityWithAccount(SignUpActivity::class.java, m)
+    }
+
+    override fun onLoginFailure(code: Int, message: String) {
     }
 
 }

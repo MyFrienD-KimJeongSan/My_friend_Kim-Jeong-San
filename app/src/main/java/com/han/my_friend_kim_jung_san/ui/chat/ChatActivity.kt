@@ -10,9 +10,12 @@ import android.os.Build
 import android.provider.MediaStore
 import android.view.View
 import android.widget.PopupMenu
+
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+
+import com.han.my_friend_kim_jung_san.ApplicationClass.Companion.BASE_URL
 import com.han.my_friend_kim_jung_san.R
 import com.han.my_friend_kim_jung_san.data.local.MenuData
 import com.han.my_friend_kim_jung_san.databinding.ActivityChatBinding
@@ -27,15 +30,31 @@ import java.util.*
 
 class ChatActivity : BaseActivity<ActivityChatBinding>(ActivityChatBinding::inflate) {
 
+
     var isOpen: Boolean = false
     val CAMERA = arrayOf(Manifest.permission.CAMERA)
     val CAMERA_CODE = 98
 
+    var isOpen : Boolean = false
+
     override fun initAfterBinding() {
+        init()
+
+        openOptionMenu()
+    }
+
 
         binding.backArrowIBtn.setOnClickListener {
             finish()
         }
+
+
+    private fun init(){
+        val name = this.intent.getStringExtra("name")
+        val startDate = this.intent.getStringExtra("startDate")
+        val roomId = this.intent.getIntExtra("roomId", 0)
+        val userIdList = this.intent.getStringArrayListExtra("userIdList")
+        val userNameList = this.intent.getStringArrayListExtra("userNameList")
 
         binding.menuOpenBtn.setOnClickListener {
             openMenu()
@@ -44,6 +63,18 @@ class ChatActivity : BaseActivity<ActivityChatBinding>(ActivityChatBinding::infl
         binding.menuCloseBtn.setOnClickListener {
             closeMenu()
         }
+        binding.roomTitle.text = name
+        //임시로 날짜 넣음
+        binding.chatStartTV.text = startDate
+        var remainUser = ""
+        userNameList?.let {
+            for(i in 1..userNameList.lastIndex){
+                remainUser += "${userNameList[i]}님,"
+            }
+            remainUser = remainUser.dropLast(1)
+            binding.chatUserListTV.text = "${userNameList[0]}님이 ${remainUser}을 초대했습니다."
+        }
+
 
         binding.bottomMenuDI.setOnClickListener {
             startNextActivity(FirstCalculationActivity::class.java)
@@ -100,10 +131,11 @@ class ChatActivity : BaseActivity<ActivityChatBinding>(ActivityChatBinding::infl
             binding.optionBtn.setOnClickListener {
                 var popupMenu = PopupMenu(applicationContext, it)
 
-                menuInflater?.inflate(R.menu.option_menu, popupMenu.menu)
-                popupMenu.show()
-                popupMenu.setOnMenuItemClickListener {
-                    when (it.itemId) {
+
+            menuInflater.inflate(R.menu.option_menu, popupMenu.menu)
+            popupMenu.show()
+            popupMenu.setOnMenuItemClickListener {
+                when(it.itemId) {
 //                    R.id.finalOperation -> {
 //                        //최종 정산 내역 프래그먼트와 연결
 //                    }

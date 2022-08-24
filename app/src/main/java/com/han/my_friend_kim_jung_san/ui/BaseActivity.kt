@@ -2,6 +2,7 @@ package com.han.my_friend_kim_jung_san.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.animation.AnimationUtils
@@ -10,6 +11,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewbinding.ViewBinding
 import com.han.my_friend_kim_jung_san.R
+import com.kakao.sdk.user.UserApiClient
 
 abstract class BaseActivity<T: ViewBinding>(private val inflate: (LayoutInflater) -> T): AppCompatActivity(){
     protected lateinit var binding: T
@@ -43,6 +45,14 @@ abstract class BaseActivity<T: ViewBinding>(private val inflate: (LayoutInflater
     fun startActivityWithInfo(activity: Class<*>?, key: String?, value: String?) {
         val intent = Intent(this, activity)
         intent.putExtra(key, value)
+        startActivity(intent)
+    }
+    fun startActivityWithAccount(activity: Class<*>?, list: MutableMap<String, String>) {
+        val intent = Intent(this, activity)
+        intent.apply {
+            putExtra("name", list["name"])
+            putExtra("uid", list["uid"])
+        }
         startActivity(intent)
     }
 
