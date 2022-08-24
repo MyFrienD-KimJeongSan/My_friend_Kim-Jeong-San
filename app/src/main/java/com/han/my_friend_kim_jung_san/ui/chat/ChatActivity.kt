@@ -16,6 +16,7 @@ import androidx.core.content.ContextCompat
 import com.han.my_friend_kim_jung_san.R
 import com.han.my_friend_kim_jung_san.data.local.MenuData
 import com.han.my_friend_kim_jung_san.databinding.ActivityChatBinding
+import com.han.my_friend_kim_jung_san.databinding.VoteMenuItemBinding
 import com.han.my_friend_kim_jung_san.ui.BaseActivity
 import com.han.my_friend_kim_jung_san.ui.calculation.FirstCalculationActivity
 import com.han.my_friend_kim_jung_san.ui.calculation.SecondCalculationActivity
@@ -29,8 +30,11 @@ class ChatActivity : BaseActivity<ActivityChatBinding>(ActivityChatBinding::infl
     var isOpen : Boolean = false
     val CAMERA = arrayOf(Manifest.permission.CAMERA)
     val CAMERA_CODE = 98
+    lateinit var voteMenuItemBinding : VoteMenuItemBinding
 
     override fun initAfterBinding() {
+
+        voteMenuItemBinding = VoteMenuItemBinding.inflate(layoutInflater)
 
         binding.backArrowIBtn.setOnClickListener {
             finish()
@@ -58,12 +62,13 @@ class ChatActivity : BaseActivity<ActivityChatBinding>(ActivityChatBinding::infl
         openOptionMenu()
 
         val list = ArrayList<MenuData>()
-        list.add(MenuData("소주", "5,000", "1", "5,000", "2"))
-        list.add(MenuData("삼겹살", "12,500", "3", "37,500", "2"))
-        list.add(MenuData("짬뽕탕", "15,000", "1", "15,000", "2"))
+        list.add(MenuData(false, "소주", "5,000", "1", "5,000", "2"))
+        list.add(MenuData(false, "삼겹살", "12,500", "3", "37,500", "2"))
+        list.add(MenuData(false, "짬뽕탕", "15,000", "1", "15,000", "2"))
 
         val adapter = VoteMenuRVAdapter(list)
         binding.menuList.adapter = adapter
+
     }
 
     private fun openMenu() {
