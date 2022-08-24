@@ -27,14 +27,11 @@ import java.util.*
 
 class ChatActivity : BaseActivity<ActivityChatBinding>(ActivityChatBinding::inflate) {
 
-    var isOpen : Boolean = false
+    var isOpen: Boolean = false
     val CAMERA = arrayOf(Manifest.permission.CAMERA)
     val CAMERA_CODE = 98
-    lateinit var voteMenuItemBinding : VoteMenuItemBinding
 
     override fun initAfterBinding() {
-
-        voteMenuItemBinding = VoteMenuItemBinding.inflate(layoutInflater)
 
         binding.backArrowIBtn.setOnClickListener {
             finish()
@@ -69,101 +66,116 @@ class ChatActivity : BaseActivity<ActivityChatBinding>(ActivityChatBinding::infl
         val adapter = VoteMenuRVAdapter(list)
         binding.menuList.adapter = adapter
 
-    }
+        var isClicked: Boolean = false
 
-    private fun openMenu() {
-        if (isOpen == false) {
-            binding.closeBottomMenuCL.visibility = View.GONE
-            binding.openBottomMenuCL.visibility = View.VISIBLE
-            isOpen = true
+
+        binding.voteCompleteBtn.setOnClickListener {
+            if (binding.voteCompleteBtn.isActivated) {
+                binding.voteCompleteBtn.isActivated = false
+            }
+            else {
+                    binding.voteCompleteBtn.isActivated = true
+            }
         }
     }
 
-    private fun closeMenu() {
-        if  (isOpen == true) {
-            binding.openBottomMenuCL.visibility = View.GONE
-            binding.closeBottomMenuCL.visibility = View.VISIBLE
-            isOpen = false
+        private fun openMenu() {
+            if (isOpen == false) {
+                binding.closeBottomMenuCL.visibility = View.GONE
+                binding.openBottomMenuCL.visibility = View.VISIBLE
+                isOpen = true
+            }
         }
-    }
 
-    @SuppressLint("NewApi")
-    private fun openOptionMenu() {
-        binding.optionBtn.setOnClickListener {
-            var popupMenu = PopupMenu(applicationContext, it)
+        private fun closeMenu() {
+            if (isOpen == true) {
+                binding.openBottomMenuCL.visibility = View.GONE
+                binding.closeBottomMenuCL.visibility = View.VISIBLE
+                isOpen = false
+            }
+        }
 
-            menuInflater?.inflate(R.menu.option_menu, popupMenu.menu)
-            popupMenu.show()
-            popupMenu.setOnMenuItemClickListener {
-                when(it.itemId) {
+        @SuppressLint("NewApi")
+        private fun openOptionMenu() {
+            binding.optionBtn.setOnClickListener {
+                var popupMenu = PopupMenu(applicationContext, it)
+
+                menuInflater?.inflate(R.menu.option_menu, popupMenu.menu)
+                popupMenu.show()
+                popupMenu.setOnMenuItemClickListener {
+                    when (it.itemId) {
 //                    R.id.finalOperation -> {
 //                        //최종 정산 내역 프래그먼트와 연결
 //                    }
 
-                    R.id.getOut -> {
+                        R.id.getOut -> {
 
-                        //대화방 나가기 기능과 연결
+                            //대화방 나가기 기능과 연결
 
-                        supportFragmentManager.beginTransaction()
-                            .replace(R.id.frameLayout, HomeFragment())
-                            .commitAllowingStateLoss()
-                        return@setOnMenuItemClickListener true
+                            supportFragmentManager.beginTransaction()
+                                .replace(R.id.frameLayout, HomeFragment())
+                                .commitAllowingStateLoss()
+                            return@setOnMenuItemClickListener true
+                        }
                     }
-                }
-                false
-            }
-        }
-    }
-
-    fun checkPermission(permissions: Array<out String>): Boolean
-    {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            for (permission in permissions) {
-                if (ContextCompat.checkSelfPermission(this, permission) != PackageManager.PERMISSION_GRANTED) {
-                    ActivityCompat.requestPermissions(this, permissions, CAMERA_CODE)
-                    return false;
+                    false
                 }
             }
         }
 
-        return true;
-    }
-
-    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray)
-    {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        when(requestCode) {
-            CAMERA_CODE -> {
-                for (grant in grantResults) {
-                    if (grant != PackageManager.PERMISSION_GRANTED) {
-                        Toast.makeText(this, "카메라 권한을 승인해 주세요.", Toast.LENGTH_LONG).show()
+        fun checkPermission(permissions: Array<out String>): Boolean {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                for (permission in permissions) {
+                    if (ContextCompat.checkSelfPermission(
+                            this,
+                            permission
+                        ) != PackageManager.PERMISSION_GRANTED
+                    ) {
+                        ActivityCompat.requestPermissions(this, permissions, CAMERA_CODE)
+                        return false;
                     }
                 }
             }
+
+            return true;
         }
-    }
 
-    fun CallCamera()
-    {
-        if (checkPermission(CAMERA)) {
-            val itt = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-            startActivityForResult(itt, CAMERA_CODE)
-        }
-    }
-
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-        if (resultCode == Activity.RESULT_OK) {
+        override fun onRequestPermissionsResult(
+            requestCode: Int,
+            permissions: Array<out String>,
+            grantResults: IntArray
+        ) {
+            super.onRequestPermissionsResult(requestCode, permissions, grantResults)
             when (requestCode) {
                 CAMERA_CODE -> {
-                    if (data?.extras?.get("data") != null) {
-                        val img = data?.extras?.get("data") as Bitmap
-                        binding.imageView.setImageBitmap(img)
+                    for (grant in grantResults) {
+                        if (grant != PackageManager.PERMISSION_GRANTED) {
+                            Toast.makeText(this, "카메라 권한을 승인해 주세요.", Toast.LENGTH_LONG).show()
+                        }
+                    }
+                }
+            }
+        }
+
+        fun CallCamera() {
+            if (checkPermission(CAMERA)) {
+                val itt = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+                startActivityForResult(itt, CAMERA_CODE)
+            }
+        }
+
+        override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+            super.onActivityResult(requestCode, resultCode, data)
+
+            if (resultCode == Activity.RESULT_OK) {
+                when (requestCode) {
+                    CAMERA_CODE -> {
+                        if (data?.extras?.get("data") != null) {
+                            val img = data?.extras?.get("data") as Bitmap
+                            binding.imageView.setImageBitmap(img)
+                        }
                     }
                 }
             }
         }
     }
-
-}
