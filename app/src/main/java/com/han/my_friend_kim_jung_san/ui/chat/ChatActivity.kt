@@ -8,29 +8,30 @@ import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.os.Build
 import android.provider.MediaStore
+import android.util.Log
 import android.view.View
 import android.widget.PopupMenu
 
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.LinearLayoutManager
 
 import com.han.my_friend_kim_jung_san.ApplicationClass.Companion.BASE_URL
 import com.han.my_friend_kim_jung_san.R
+import com.han.my_friend_kim_jung_san.data.entity.Pay
 import com.han.my_friend_kim_jung_san.data.local.MenuData
+import com.han.my_friend_kim_jung_san.data.remote.payment.PaymentService
 import com.han.my_friend_kim_jung_san.databinding.ActivityChatBinding
 import com.han.my_friend_kim_jung_san.databinding.VoteMenuItemBinding
 import com.han.my_friend_kim_jung_san.ui.BaseActivity
-import com.han.my_friend_kim_jung_san.ui.calculation.CreateMeetFirstCalcActivity
-import com.han.my_friend_kim_jung_san.ui.calculation.FirstCalculationActivity
-import com.han.my_friend_kim_jung_san.ui.calculation.MeetSecondCalcActivity
-import com.han.my_friend_kim_jung_san.ui.calculation.SecondCalculationActivity
+import com.han.my_friend_kim_jung_san.ui.calculation.*
 import com.han.my_friend_kim_jung_san.ui.home.HomeFragment
 import com.han.my_friend_kim_jung_san.ui.main.MainActivity
 import com.han.my_friend_kim_jung_san.ui.meeting.MeetingRoomFragment
 import java.util.*
 
-class ChatActivity : BaseActivity<ActivityChatBinding>(ActivityChatBinding::inflate) {
+class ChatActivity : BaseActivity<ActivityChatBinding>(ActivityChatBinding::inflate), PaymentView {
 
 
     val CAMERA = arrayOf(Manifest.permission.CAMERA)
@@ -45,16 +46,18 @@ class ChatActivity : BaseActivity<ActivityChatBinding>(ActivityChatBinding::infl
     }
 
 
-
-
-
+    private var name = ""
+    private var startDate = ""
+    private var roomId = 0
+    private var userIdList = arrayListOf<String>()
+    private var userNameList = arrayListOf<String>()
     @SuppressLint("SetTextI18n")
     private fun init(){
-        val name = this.intent.getStringExtra("name")
-        val startDate = this.intent.getStringExtra("startDate")
-        val roomId = this.intent.getIntExtra("roomId", 0)
-        val userIdList = this.intent.getStringArrayListExtra("userIdList")
-        val userNameList = this.intent.getStringArrayListExtra("userNameList")
+        name = this.intent.getStringExtra("name")!!
+        startDate = this.intent.getStringExtra("startDate")!!
+        roomId = this.intent.getIntExtra("roomId", 0)
+        userIdList = this.intent.getStringArrayListExtra("userIdList")!!
+        userNameList = this.intent.getStringArrayListExtra("userNameList")!!
 
         binding.menuOpenBtn.setOnClickListener {
             openMenu()
@@ -67,7 +70,7 @@ class ChatActivity : BaseActivity<ActivityChatBinding>(ActivityChatBinding::infl
         //임시로 날짜 넣음
         binding.chatStartTV.text = startDate
         var remainUser = ""
-        userNameList?.let {
+        userNameList.let {
             for(i in 1..userNameList.lastIndex){
                 remainUser += "${userNameList[i]}님,"
             }
@@ -79,16 +82,11 @@ class ChatActivity : BaseActivity<ActivityChatBinding>(ActivityChatBinding::infl
         }
 
         binding.bottomMenuN1.setOnClickListener {
-            startNextActivity(CreateMeetFirstCalcActivity::class.java)
+            searchPayment(roomId, 1)
         }
 
         binding.bottomMenuDI.setOnClickListener {
-            val intent = Intent(this, MeetSecondCalcActivity::class.java)
-            intent.putExtra("roomId", roomId)
-            intent.putExtra("startDate", startDate)
-            intent.putExtra("userIdList", userIdList)
-            intent.putExtra("userNameList", userNameList)
-            startActivity(intent)
+            searchPayment(roomId, 2)
         }
 
         binding.bottomMenuCamera.setOnClickListener {
@@ -212,4 +210,49 @@ class ChatActivity : BaseActivity<ActivityChatBinding>(ActivityChatBinding::infl
                 }
             }
         }
+
+
+
+    private fun searchPayment(roomId: Int, id: Int) {
+        PaymentService.searchPaymentList(this, roomId, id)
     }
+
+    //정산 목록이 있을 때
+    override fun onPaymentSearchSuccess(list: List<Pay>, id: Int) {
+        Log.i("payment", "정산목록 있을 때")
+        val intent = Intent(this, OperationListActivity::class.java)
+        intent.putExtra("roomId", roomId)
+        intent.putExtra("startDate", startDate)
+        intent.putExtra("userIdList", userIdList)
+        intent.putExtra("userNameList", userNameList)
+        intent.putExtra("id", id)
+        startActivity(intent)
+    }
+
+    //정산 목록이 없을 때
+    override fun onPaymentSearchNullSuccess(id: Int) {
+        Log.i("payment", "정산목록 없을 때")
+        if (id == 1){
+            val intent = Intent(this, MeetFirstCalcActivity::class.java)
+            intent.putExtra("roomId", roomId)
+            intent.putExtra("startDate", startDate)
+            intent.putExtra("userIdList", userIdList)
+            intent.putExtra("userNameList", userNameList)
+            intent.putExtra("id", id)
+            startActivity(intent)
+        }else if(id == 2){
+            val intent = Intent(this, MeetSecondCalcActivity::class.java)
+            intent.putExtra("roomId", roomId)
+            intent.putExtra("startDate", startDate)
+            intent.putExtra("userIdList", userIdList)
+            intent.putExtra("userNameList", userNameList)
+            intent.putExtra("id", id)
+            startActivity(intent)
+        }
+
+
+    }
+
+    override fun onPaymentSearchFailure() {
+    }
+}

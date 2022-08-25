@@ -219,7 +219,7 @@
                 android:layout_height="0.3dp"
                 android:src="@drawable/line_1"
                 app:layout_constraintBottom_toBottomOf="parent"
-                android:background="#757575"
+                android:background="#EFEFF0"
                 android:layout_marginBottom="80dp"/>
 
             <ImageButton
@@ -332,7 +332,7 @@
             android:layout_height="0.3dp"
             android:src="@drawable/line_1"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:background="#757575"
+            android:background="#EFEFF0"
             android:layout_marginBottom="80dp"/>
 
         <ImageButton

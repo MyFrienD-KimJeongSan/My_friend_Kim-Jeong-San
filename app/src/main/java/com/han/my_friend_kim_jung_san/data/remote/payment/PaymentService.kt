@@ -8,9 +8,11 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+
 object PaymentService {
     val paymentService = retrofit.create(PaymentRetrofitInterface::class.java)
-    fun searchPaymentList(paymentView: PaymentView, roomId: Int){
+
+    fun searchPaymentList(paymentView: PaymentView, roomId: Int, id: Int){
         paymentService.searchPaymentList(roomId).enqueue(object : Callback<PaymentResponse>{
             override fun onResponse(
                 call: Call<PaymentResponse>,
@@ -18,8 +20,8 @@ object PaymentService {
             ) {
                 val resp = response.body()!!
                 when(resp.statusCode){
-                    200 -> paymentView.onPaymentSearchSuccess(resp.list!!)
-                    204 -> paymentView.onPaymentSearchNullSuccess()
+                    200 -> paymentView.onPaymentSearchSuccess(resp.list!!, id)
+                    204 -> paymentView.onPaymentSearchNullSuccess(id)
                     else -> paymentView.onPaymentSearchFailure()
                 }
             }

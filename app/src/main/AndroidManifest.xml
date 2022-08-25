@@ -8,7 +8,7 @@
     <uses-permission
         android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         tools:ignore="ScopedStorage" />
-    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.CAMERA" />
 
     <application
         android:name=".ApplicationClass"
@@ -20,15 +20,24 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ui.calculation.OperationListActivity"
+            android:exported="false" />
+
+        <activity
             android:name=".ui.meeting.invite.InviteActivity"
             android:exported="false" />
+        <activity android:name=".ui.calculation.MeetFirstCalcActivity"
+            android:exported="false"/>
         <activity
             android:name=".ui.meeting.CreateMeetingActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".ui.calculation.CreateMeetFirstCalcActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.calculation.MeetSecondCalcActivity"
             android:windowSoftInputMode="adjustPan"
-            android:exported="false" />
-        <activity android:name=".ui.calculation.CreateMeetFirstCalcActivity"
-            android:exported="false" />
-        <activity android:name=".ui.calculation.MeetSecondCalcActivity"
             android:exported="false" />
         <activity
             android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
@@ -74,7 +83,7 @@
             android:exported="true" />
         <activity
             android:name=".ui.chat.ChatActivity"
-            android:exported="false"/>
+            android:exported="false" />
     </application>
 
 </manifest>

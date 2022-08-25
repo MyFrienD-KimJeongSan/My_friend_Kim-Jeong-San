@@ -8,7 +8,7 @@ import com.han.my_friend_kim_jung_san.ui.BaseActivity
 import com.han.my_friend_kim_jung_san.ui.main.MainActivity
 
 class SignUpActivity : BaseActivity<ActivitySignUpBinding>(ActivitySignUpBinding::inflate), SignUpView{
-    var uid = this.intent.getStringExtra("uid")
+    var uid = ""
     override fun initAfterBinding() {
         binding.NameTextView.text = this.intent.getStringExtra("name")
         binding.completeBtn.setOnClickListener {
@@ -24,6 +24,7 @@ class SignUpActivity : BaseActivity<ActivitySignUpBinding>(ActivitySignUpBinding
     override fun onSignUpFailure(code: Int, message: String) {
     }
     private fun accountUpdate(){
-        AuthService.signUp(this, uid.toString(), Accounts("${binding.bankBtn.text} ${binding.accountET.text}"))
+        uid = this.intent.getStringExtra("uid").toString()
+        AuthService.signUp(this, uid, Accounts("${binding.bankBtn.text} ${binding.accountET.text}"))
     }
 }
