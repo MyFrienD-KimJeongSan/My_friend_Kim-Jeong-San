@@ -9,6 +9,7 @@ import com.han.my_friend_kim_jung_san.data.entity.User
 import com.han.my_friend_kim_jung_san.ui.home.AllSearchView
 import com.han.my_friend_kim_jung_san.ui.home.SearchView
 import com.han.my_friend_kim_jung_san.ui.meeting.CreateMeetingRoomView
+import com.kakao.sdk.user.UserApiClient
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -74,5 +75,28 @@ object RoomService {
             override fun onFailure(call: Call<ScheduleResponse>, t: Throwable) {
             }
         })
+
+    }
+
+    fun initEvent(userId: String): MutableMap<String,List<Data>>{
+        val allSearchService = retrofit.create(RoomRetrofitInterface::class.java)
+        var mm = mutableMapOf<String, List<Data>>()
+        var list = mutableListOf<Data>()
+        allSearchService.allSearchRoom(userId).enqueue(object : Callback<ScheduleResponse>{
+            override fun onResponse(
+                call: Call<ScheduleResponse>,
+                response: Response<ScheduleResponse>
+            ) {
+                Log.i("allsearch", response.toString())
+                val resp = response.body()!!
+                list.addAll(resp.list!!)
+                list.forEach {
+                    mm[it.startDate.toString()] = mm[it.startDate].orEmpty().plus(it)
+                }
+            }
+            override fun onFailure(call: Call<ScheduleResponse>, t: Throwable) {
+            }
+        })
+        return mm
     }
 }

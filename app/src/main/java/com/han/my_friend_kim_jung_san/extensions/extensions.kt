@@ -3,6 +3,7 @@ package com.han.my_friend_kim_jung_san.extensions
 import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.drawable.GradientDrawable
+import android.util.Log
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
@@ -13,9 +14,21 @@ import androidx.annotation.ColorRes
 import androidx.annotation.DrawableRes
 import androidx.annotation.LayoutRes
 import androidx.core.content.ContextCompat
+import com.han.my_friend_kim_jung_san.ApplicationClass
+import com.han.my_friend_kim_jung_san.data.entity.Data
+import com.han.my_friend_kim_jung_san.data.remote.room.RoomRetrofitInterface
+import com.han.my_friend_kim_jung_san.data.remote.room.RoomService
+import com.han.my_friend_kim_jung_san.data.remote.room.ScheduleResponse
+import com.han.my_friend_kim_jung_san.ui.home.AllSearchView
+import com.kakao.sdk.user.UserApiClient
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.time.DayOfWeek
 import java.time.temporal.WeekFields
 import java.util.*
+
+
 
 fun View.makeVisible() {
     visibility = View.VISIBLE

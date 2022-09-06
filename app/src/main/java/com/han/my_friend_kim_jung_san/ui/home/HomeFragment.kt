@@ -5,18 +5,18 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.core.os.bundleOf
 import androidx.core.view.children
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.han.my_friend_kim_jung_san.ApplicationClass.Companion.schedule
 import com.han.my_friend_kim_jung_san.R
 import com.han.my_friend_kim_jung_san.data.entity.Data
+import com.han.my_friend_kim_jung_san.data.entity.User
 import com.han.my_friend_kim_jung_san.data.remote.room.RoomService
 import com.han.my_friend_kim_jung_san.databinding.CalendarDayBinding
 import com.han.my_friend_kim_jung_san.databinding.CalendarHeaderBinding
@@ -94,8 +94,11 @@ class EventsAdapter(val onClick: (Data) -> Unit) :
     }
 }
 
+
 @SuppressLint("NewApi")
 class HomeFragment : CalendarFragment(R.layout.fragment_home), SearchView, AllSearchView {
+    //여기서 바로 초기화 해주면 달력 해결됨
+    private var initEvents = schedule
     private val eventsAdapter = EventsAdapter {
         val intent = Intent(activity, ChatActivity::class.java)
         intent.putExtra("roomId", it.roomId!!.toInt())
@@ -115,34 +118,44 @@ class HomeFragment : CalendarFragment(R.layout.fragment_home), SearchView, AllSe
     private var selectedDate: LocalDate? = null
     private val today = LocalDate.now()
     private val monthTitleFormatter = DateTimeFormatter.ofPattern("MMMM")
-    val event = mutableMapOf<String, List<Data>>()
+
     private lateinit var binding: FragmentHomeBinding
     private var selectedDayListener: SelectedDayListener? = null
-
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = FragmentHomeBinding.inflate(inflater, container, false)
+        return binding.root
+    }
     @SuppressLint("NotifyDataSetChanged")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        allSearch()
+        Log.i("chkchk", initEvents.count().toString())
         binding = FragmentHomeBinding.bind(view)
         binding.meetingRoomRV.apply {
             layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
             adapter = eventsAdapter
         }
 
+        eventsAdapter.notifyDataSetChanged()
         val daysOfWeek = daysOfWeekFromLocale()
         val currentMonth = YearMonth.now()
         binding.calendar.apply {
             setup(currentMonth.minusMonths(10), currentMonth.plusMonths(10), daysOfWeek.first())
             scrollToMonth(currentMonth)
-
         }
         if (savedInstanceState == null) {
             binding.calendar.post {
-                selectDate(today)
-                selectedDayListener!!.selectedDay(today)
                 searchSchedule()
+                selectedDayListener!!.selectedDay(today)
+                selectDate(today)
             }
         }
+
+
         binding.noticeBtn.setOnClickListener {
             val intent = Intent(context, NoticeActivity::class.java)
             startActivity(intent)
@@ -152,33 +165,23 @@ class HomeFragment : CalendarFragment(R.layout.fragment_home), SearchView, AllSe
             startActivity(intent)
         }
 
-
-        binding.calendar.monthScrollListener = { month ->
-            binding.yearTV.text = month.yearMonth.year.toString()
-            binding.monthTV.text = monthTitleFormatter.format(month.yearMonth)
-
-        }
-        //allSearch()
-        Log.i("event", "$event 1")
         class DayViewContainer(view: View) : ViewContainer(view) {
             lateinit var day: CalendarDay
             val binding = CalendarDayBinding.bind(view)
-
             init {
-
                 view.setOnClickListener {
                     if (day.owner == DayOwner.THIS_MONTH) {
-                        //일정요청
-                        searchSchedule()
                         selectDate(day.date)
                         selectedDayListener!!.selectedDay(day.date)
                     }
                 }
             }
         }
+
         binding.calendar.dayBinder = object : DayBinder<DayViewContainer> {
             override fun create(view: View) = DayViewContainer(view)
             override fun bind(container: DayViewContainer, day: CalendarDay) {
+
                 container.day = day
                 val textView = container.binding.dayTV
                 val red = container.binding.red
@@ -190,39 +193,40 @@ class HomeFragment : CalendarFragment(R.layout.fragment_home), SearchView, AllSe
 
                 textView.text = day.date.dayOfMonth.toString()
 
+                red.makeGone()
+                orange.makeGone()
+                yellow.makeGone()
+                green.makeGone()
+                blue.makeGone()
+                purple.makeGone()
+
                 if (day.owner == DayOwner.THIS_MONTH) {
                     textView.makeVisible()
-
-                    when (day.date) {
-
-                        selectedDate -> {
-                            textView.setTextColorRes(R.color.white)
-                            textView.setBackgroundResource(R.drawable.selected_day)
-                            //todo 색깔별로 처리해야함
-                            event[day.date.toString()].orEmpty().forEach {
-                                when(it.color){
-                                    "red" -> red.makeVisible()
-                                    "yellow" -> yellow.makeVisible()
-                                    "orange" -> orange.makeVisible()
-                                    "green" -> green.makeVisible()
-                                    "blue" -> blue.makeVisible()
-                                    "purple" -> purple.makeVisible()
-                                }
+                    //todo 그 해당 달에 날짜별로 다 확인해주면 될거같다.
+                    if (selectedDate == day.date) {
+                        textView.setTextColorRes(R.color.white)
+                        textView.setBackgroundResource(R.drawable.selected_day)
+                        initEvents[day.date.toString()]?.forEach {
+                            when (it.color) {
+                                "red" -> red.makeVisible()
+                                "yellow" -> yellow.makeVisible()
+                                "orange" -> orange.makeVisible()
+                                "green" -> green.makeVisible()
+                                "blue" -> blue.makeVisible()
+                                "purple" -> purple.makeVisible()
                             }
                         }
-                        else -> {
-                            textView.setTextColorRes(R.color.black)
-                            textView.background = null
-                            Log.i("event", "$event 2")
-                            event[day.date.toString()].orEmpty().forEach {
-                                when(it.color){
-                                    "red" -> red.makeVisible()
-                                    "yellow" -> yellow.makeVisible()
-                                    "orange" -> orange.makeVisible()
-                                    "green" -> green.makeVisible()
-                                    "blue" -> blue.makeVisible()
-                                    "purple" -> purple.makeVisible()
-                                }
+                    } else {
+                        textView.setTextColorRes(R.color.black)
+                        textView.background = null
+                        initEvents[day.date.toString()]?.forEach {
+                            when (it.color) {
+                                "red" -> red.makeVisible()
+                                "yellow" -> yellow.makeVisible()
+                                "orange" -> orange.makeVisible()
+                                "green" -> green.makeVisible()
+                                "blue" -> blue.makeVisible()
+                                "purple" -> purple.makeVisible()
                             }
                         }
                     }
@@ -238,6 +242,7 @@ class HomeFragment : CalendarFragment(R.layout.fragment_home), SearchView, AllSe
         }
 
         binding.calendar.monthHeaderBinder = object : MonthHeaderFooterBinder<MonthViewContainer> {
+            override fun create(view: View) = MonthViewContainer(view)
             override fun bind(container: MonthViewContainer, month: CalendarMonth) {
                 if (container.legendLayout.tag == null) {
                     container.legendLayout.tag = month.yearMonth
@@ -246,12 +251,15 @@ class HomeFragment : CalendarFragment(R.layout.fragment_home), SearchView, AllSe
                             tv.text = daysOfWeek[index].name.first().toString()
                             tv.setTextColorRes(R.color.black)
                         }
+                    month.yearMonth
                 }
             }
-
-            override fun create(view: View) = MonthViewContainer(view)
         }
+        binding.calendar.monthScrollListener = { month ->
+            binding.yearTV.text = month.yearMonth.year.toString()
+            binding.monthTV.text = monthTitleFormatter.format(month.yearMonth)
 
+        }
         binding.rightArrowIV.setOnClickListener {
             binding.calendar.findFirstVisibleMonth()?.let {
                 binding.calendar.smoothScrollToMonth(it.yearMonth.next)
@@ -268,8 +276,8 @@ class HomeFragment : CalendarFragment(R.layout.fragment_home), SearchView, AllSe
         if (selectedDate != date) {
             val oldDate = selectedDate
             selectedDate = date
-            oldDate?.let { binding.calendar.notifyDateChanged(it) }
             binding.calendar.notifyDateChanged(date)
+            oldDate?.let { binding.calendar.notifyDateChanged(it) }
             updateAdapterForDate(date.toString())
         }
     }
@@ -278,7 +286,7 @@ class HomeFragment : CalendarFragment(R.layout.fragment_home), SearchView, AllSe
     private fun updateAdapterForDate(date: String?) {
         eventsAdapter.apply {
             events.clear()
-            events.addAll(event[date].orEmpty().distinct())
+            events.addAll(initEvents[date].orEmpty().distinct())
             notifyDataSetChanged()
         }
     }
@@ -301,14 +309,13 @@ class HomeFragment : CalendarFragment(R.layout.fragment_home), SearchView, AllSe
         data?.forEach { list ->
             Log.i("search", list.toString())
 
-            event[list.startDate.toString()] = event[list.startDate.toString()].orEmpty().plus(list)
+            initEvents[list.startDate.toString()] = initEvents[list.startDate.toString()].orEmpty().plus(list)
             updateAdapterForDate(list.startDate.toString())
 
         }
     }
 
     override fun onSearchFailure(code: Int?, message: String?) {
-        Log.i("search", "$code $message 검색 실패")
     }
     private fun searchSchedule(){
         UserApiClient.instance.me { user, error ->
@@ -342,13 +349,13 @@ class HomeFragment : CalendarFragment(R.layout.fragment_home), SearchView, AllSe
                 RoomService.allSearchRoom(this, user.id.toString())
             }
         }
+
     }
     //all search
     override fun onAllSearchSuccess(data: List<Data>?) {
-
         data?.forEach { list ->
             Log.i("search123", list.toString())
-            event[list.startDate.toString()] = event[list.startDate.toString()].orEmpty().plus(list)
+            initEvents[list.startDate.toString()] = initEvents[list.startDate.toString()].orEmpty().plus(list)
             updateAdapterForDate(list.startDate.toString())
         }
 
@@ -356,6 +363,7 @@ class HomeFragment : CalendarFragment(R.layout.fragment_home), SearchView, AllSe
 
     override fun onAllSearchFailure(code: Int?, message: String?) {
     }
+
 }
 
 
